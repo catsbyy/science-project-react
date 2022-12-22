@@ -21,11 +21,11 @@ a {
 }
 
 .employer-type-card {
-  background-image: url(./../../img/business.jpg);
+  background-image: url(./business.jpg);
 }
 
 .student-type-card {
-  background-image: url(./../../img/students.jpg);
+  background-image: url(./students.jpg);
 }
 
 .student-type-card:hover,

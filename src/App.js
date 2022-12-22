@@ -11,11 +11,13 @@ import Business from "./pages/Business";
 import Student from "./pages/Student";
 import SuccessfulRegistration from "./pages/SuccessfulRegistration";
 import Results from "./pages/Results";
+import ScrollToTop from "./utils/scrollToTop";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <ScrollToTop/>
         <Header />
         <Navbar />
 
@@ -27,7 +29,7 @@ function App() {
           <Route path="/success" element={<SuccessfulRegistration />} />
           <Route path="/results" element={<Results />} />
         </Routes>
-        
+
         <Footer />
       </Router>
     </div>
