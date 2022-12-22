@@ -1,25 +1,27 @@
 import cart from "./../../img/icons/cart.svg";
 import "./style.css";
 
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav className="nav-wrapper">
       <div className="container-wide">
         <div className="row space-between align-center">
-          <a href="/">
-            <div className="logo">SnB</div>
-          </a>
+          <NavLink to="/" className="logo">
+            SnB
+          </NavLink>
 
           <div className="nav">
             <ul>
               <li>
-                <a href="/">Головна</a>
+                <NavLink to="/">Головна</NavLink>
               </li>
               <li>
-                <a href="/students">Студенту</a>
+                <NavLink to="/students">Студенту</NavLink>
               </li>
               <li>
-                <a href="/business">Роботодавцю</a>
+                <NavLink to="/business">Роботодавцю</NavLink>
               </li>
             </ul>
           </div>
@@ -41,13 +43,13 @@ const Navbar = () => {
             <div className="nav">
               <ul>
                 <li>
-                  <a href="/">Головна</a>
+                  <NavLink to="/">Головна</NavLink>
                 </li>
                 <li>
-                  <a href="/students">Студенту</a>
+                  <NavLink to="/students">Студенту</NavLink>
                 </li>
                 <li>
-                  <a href="/business">Роботодавцю</a>
+                  <NavLink to="/business">Роботодавцю</NavLink>
                 </li>
               </ul>
             </div>
