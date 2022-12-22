@@ -1,0 +1,48 @@
+a {
+    text-decoration: none;
+}
+
+.employer-type-card,
+.student-type-card {
+  width: 500px;
+  height: 450px;
+  filter: grayscale(100%);
+  background-size: cover;
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #ffffff;
+  transition: all 0.2s ease-in;
+  text-decoration: none;
+}
+
+.employer-type-card {
+  background-image: url(./../../img/business.jpg);
+}
+
+.student-type-card {
+  background-image: url(./../../img/students.jpg);
+}
+
+.student-type-card:hover,
+.employer-type-card:hover {
+  filter: grayscale(0%);
+  background-size: 150%;
+  transition: all 0.2s ease-in;
+}
+
+.user-type-card:hover {
+  background-color: #a7b7e0;
+  transition: all 0.2s ease-in;
+}
+
+.user-type-text {
+  margin: 0;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 600;
+}
