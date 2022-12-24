@@ -1,6 +1,13 @@
+import "./style.css";
+
 const Footer = () => {
     return ( 
-        <footer></footer>
+        <footer>
+            <p>
+            © 2022 Science Project. All rights reserved.
+            </p>
+            
+        </footer>
      );
 }
  

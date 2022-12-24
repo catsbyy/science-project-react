@@ -1,10 +1,57 @@
+import { NavLink } from "react-router-dom";
+import BtnNext from "../components/BtnNext/BtnNext";
+import BtnBack from "../components/BtnBack/BtnBack";
+import { useState } from "react";
+import { education } from "./../helpers/educationOptionsList";
+import { englishLevels } from "./../helpers/englishLevelsList";
+import { positions } from "./../helpers/positionOptionsList";
+import { workExps } from "./../helpers/workExpOptionsList";
+import { workAreas } from "./../helpers/workAreaOptionsList";
+import { salaries } from "./../helpers/salaryOptionsList";
+import { workplaces } from "./../helpers/workplaceOptionsList";
+
 const Students = () => {
+  const [student, setStudent] = useState({
+    studentSurname: "",
+    studentName: "",
+    studentPatronymic: "",
+    studentDateOfBirth: "",
+    studentMobNumber: "",
+    studentEmail: "",
+    studentRegion: "",
+    studentCity: "",
+    studentStreet: "",
+    studentHouseNum: "",
+    studentLinkedin: "",
+    studentGithub: "",
+    studentEducation: "",
+    studentUniversity: "",
+    studentSpecialty: "",
+    studentTechAndTools: "",
+    studentEnglish: "",
+    studentSummary: "",
+    studentPosition: "",
+    studentWorkExp: "",
+    studentWorkArea: "",
+    studentSalary: "",
+    studentWorkplace: "",
+    studentProfilePic: "",
+  });
+
+  const handleChange = (event) => {
+    setStudent({ ...student, [event.target.name]: event.target.value });
+  };
+
+  const addNewStudent = () => {
+    console.log("created student", student);
+  };
+
   return (
     <main className="students-body">
       <div className="container">
         <header>Анкета кандидата</header>
 
-        <form action="#" name="registrationForm" method="post">
+        <form action="#" name="registrationForm" method="post" onSubmit={addNewStudent}>
           <div className="form first">
             <div className="details personal">
               <span className="title">Персональні дані</span>
@@ -12,32 +59,68 @@ const Students = () => {
               <div className="fields">
                 <div className="input-field">
                   <label>Прізвище *</label>
-                  <input name="studentSurname" type="text" placeholder="Введіть ваше прізвище" required />
+                  <input
+                    name="studentSurname"
+                    type="text"
+                    placeholder="Введіть ваше прізвище"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Ім'я *</label>
-                  <input name="studentName" type="text" placeholder="Введіть ваше ім'я" required />
+                  <input
+                    name="studentName"
+                    type="text"
+                    placeholder="Введіть ваше ім'я"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>По-батькові *</label>
-                  <input name="studentPatronymic" type="text" placeholder="Введіть ваше по-батькові" required />
+                  <input
+                    name="studentPatronymic"
+                    type="text"
+                    placeholder="Введіть ваше по-батькові"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Дата народження *</label>
-                  <input name="studentDateOfBirth" type="date" placeholder="Enter birth date" required />
+                  <input
+                    name="studentDateOfBirth"
+                    type="date"
+                    placeholder="Enter birth date"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Мобільний номер *</label>
-                  <input name="studentMobNumber" type="number" placeholder="Введіть мобільний номер" required />
+                  <input
+                    name="studentMobNumber"
+                    type="number"
+                    placeholder="Введіть мобільний номер"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Електронна пошта *</label>
-                  <input name="studentEmail" type="email" placeholder="Введіть електронну пошту" required />
+                  <input
+                    name="studentEmail"
+                    type="email"
+                    placeholder="Введіть електронну пошту"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
@@ -49,7 +132,7 @@ const Students = () => {
                 <div className="input-field">
                   <label>Область *</label>
 
-                  <select required name="studentRegion">
+                  <select required name="studentRegion" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть вашу область
                     </option>
@@ -59,34 +142,59 @@ const Students = () => {
 
                 <div className="input-field">
                   <label>Місто *</label>
-                  <input name="studentCity" type="text" placeholder="Введіть ваше місто" required />
+                  <input
+                    name="studentCity"
+                    type="text"
+                    placeholder="Введіть ваше місто"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Вулиця *</label>
-                  <input name="studentStreet" type="text" placeholder="Введіть вашу вулицю" required />
+                  <input
+                    name="studentStreet"
+                    type="text"
+                    placeholder="Введіть вашу вулицю"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Номер будинку *</label>
-                  <input name="studentHouseNum" type="text" placeholder="Введіть номер будинку" required />
+                  <input
+                    name="studentHouseNum"
+                    type="text"
+                    placeholder="Введіть номер будинку"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>LinkedIn</label>
-                  <input name="studentLinkedin" type="url" placeholder="Введіть посилання на LinkedIn" />
+                  <input
+                    name="studentLinkedin"
+                    type="url"
+                    placeholder="Введіть посилання на LinkedIn"
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>GitHub</label>
-                  <input name="studentGithub" type="url" placeholder="Введіть посилання на GitHub" />
+                  <input
+                    name="studentGithub"
+                    type="url"
+                    placeholder="Введіть посилання на GitHub"
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
 
-              <button className="nextBtn">
-                <span className="btnText">Далі</span>
-                <i className="uil uil-navigator"></i>
-              </button>
+              <BtnNext />
             </div>
           </div>
 
@@ -97,25 +205,35 @@ const Students = () => {
               <div className="fields">
                 <div className="input-field">
                   <label>Рівень освіти *</label>
-                  <select required name="studentEducation">
+                  <select required name="studentEducation" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть рівень освіти
                     </option>
-                    <option>Вища</option>
-                    <option>Фахова передвища</option>
-                    <option>Професійно-технічна</option>
-                    <option>Повна середня</option>
+                    {education.map((eduOption, index) => {
+                      return <option>{eduOption}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Заклад освіти *</label>
-                  <input name="studentUniversity" type="text" placeholder="Введіть заклад освіти" required />
+                  <input
+                    name="studentUniversity"
+                    type="text"
+                    placeholder="Введіть заклад освіти"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field">
                   <label>Спеціальність</label>
-                  <input name="studentSpecialty" type="text" placeholder="Введіть спеціальність" />
+                  <input
+                    name="studentSpecialty"
+                    type="text"
+                    placeholder="Введіть спеціальність"
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="input-field" id="input-field-technologies">
@@ -125,6 +243,7 @@ const Students = () => {
                     name="studentTechAndTools"
                     placeholder="Технології та інструменти"
                     required
+                    onChange={handleChange}
                   >
                     <option disabled selected>
                       Технології та інструменти
@@ -135,23 +254,24 @@ const Students = () => {
 
                 <div className="input-field">
                   <label>Рівень англійської *</label>
-                  <select required name="studentEnglish">
+                  <select required name="studentEnglish" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть рівень англійської
                     </option>
-                    <option>Beginner - A1</option>
-                    <option>Elementary - A2</option>
-                    <option>Pre-Intermediate - A2+</option>
-                    <option>Intermediate - B1</option>
-                    <option>Upper-Intermediate - B2</option>
-                    <option>Advanced - C1</option>
-                    <option>Proficient - C2</option>
+                    {englishLevels.map((level, index) => {
+                      return <option>{level}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Коротка розповідь про себе</label>
-                  <input name="studentSummary" type="text" placeholder="Опис декількома реченнями" />
+                  <input
+                    name="studentSummary"
+                    type="text"
+                    placeholder="Опис декількома реченнями"
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
@@ -161,93 +281,84 @@ const Students = () => {
               <div className="fields">
                 <div className="input-field">
                   <label>Посада *</label>
-                  <select required name="studentPosition">
+                  <select required name="studentPosition" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть посаду
                     </option>
-                    <option>Інтерн</option>
-                    <option>Джуніор-розробник</option>
-                    <option>Мідл-розробник</option>
-                    <option>Сеньйор-розробник</option>
-                    <option>Архітектор</option>
-                    <option>Веб-дизайнер</option>
-                    <option>QA-інженер</option>
+                    {positions.map((position, index) => {
+                      return <option>{position}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Досвід роботи *</label>
-                  <select required name="studentWorkExp">
+                  <select required name="studentWorkExp" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть досвід роботи
                     </option>
-                    <option>0</option>
-                    <option>0.5+</option>
-                    <option>1+</option>
-                    <option>1.5+</option>
-                    <option>2+</option>
-                    <option>3+</option>
-                    <option>5+</option>
+                    {workExps.map((workExp, index) => {
+                      return <option>{workExp}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Область роботи *</label>
-                  <select required name="studentWorkArea">
+                  <select required name="studentWorkArea" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть область роботи
                     </option>
-                    <option>Front End</option>
-                    <option>Back End</option>
-                    <option>Full Stack</option>
-                    <option>Web Design</option>
-                    <option>Quality Assurance</option>
+                    {workAreas.map((workArea, index) => {
+                      return <option>{workArea}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Очікувана заробітна плата</label>
-                  <select name="studentSalary">
+                  <select name="studentSalary" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть заробітну плату ($)
                     </option>
-                    <option>300-500</option>
-                    <option>500-1000</option>
-                    <option>1000-2000</option>
-                    <option>2000-5000</option>
-                    <option>5000+</option>
+                    {salaries.map((salary, index) => {
+                      return <option>{salary}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Місце роботи</label>
-                  <select name="studentWorkplace">
+                  <select name="studentWorkplace" onChange={handleChange}>
                     <option disabled selected>
                       Оберіть місце роботи
                     </option>
-                    <option>Неважливо</option>
-                    <option>Віддалено</option>
-                    <option>Офіс</option>
-                    <option>Віддалено/офіс</option>
+                    {workplaces.map((workplace, index) => {
+                      return <option>{workplace}</option>;
+                    })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Профільна картинка</label>
-                  <input name="studentProfilePic" type="url" placeholder="Введіть посилання на картинку" />
+                  <input
+                    name="studentProfilePic"
+                    type="url"
+                    placeholder="Введіть посилання на картинку"
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
 
               <div className="buttons">
-                <div className="backBtn">
-                  <i className="uil uil-navigator"></i>
-                  <span className="btnText">Назад</span>
-                </div>
+                <BtnBack />
 
-                <button className="sumbit">
-                  <span className="btnText">Підтвердити</span>
-                  <i className="uil uil-navigator"></i>
-                </button>
+                <NavLink to="/success">
+                  <button className="sumbit">
+                    <span className="btnText">Підтвердити</span>
+                    <i className="uil uil-navigator"></i>
+                  </button>
+                </NavLink>
               </div>
             </div>
           </div>
