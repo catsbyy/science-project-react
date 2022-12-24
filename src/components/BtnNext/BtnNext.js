@@ -7,7 +7,6 @@ const BtnNext = () => {
   useEffect(() => {
     const form = document.body.querySelector("form");
     const allInput = form.querySelectorAll(".first input");
-    console.log(allInput);
     //form.classList.add("secActive");
     if (
       allInput.forEach((input) => {

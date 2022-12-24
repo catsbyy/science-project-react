@@ -25,7 +25,8 @@ const Business = () => {
     setStudent({ ...student, [event.target.name]: event.target.value });
   };
 
-  const searchCandidates = () => {
+  const searchCandidates = (e) => {
+    e.preventDefault();
     console.log("student", student);
   };
 
