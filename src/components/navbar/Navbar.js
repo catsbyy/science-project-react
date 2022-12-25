@@ -1,4 +1,4 @@
-import cart from "./../../img/icons/cart.svg";
+import support from "./../../img/icons/support.svg";
 import "./style.css";
 
 import { NavLink } from "react-router-dom";
@@ -30,10 +30,10 @@ const Navbar = () => {
             href="https://shop.lanadelrey.polydor.co.uk/?utm_campaign=LanaDelRey20190730&utm_content=&utm_medium=owned&utm_source=Website&utm_linkurl=Lana.lnk.to%2FStore&utm_board=lana-del-rey&utm_country=GB&utm_referrer=www.lanadelrey.com%2F"
             target="_blank"
             rel="noreferrer"
-            className="store"
+            className="support"
           >
-            <img src={cart} alt="cart" />
-            щось
+            <img src={support} alt="support" />
+            допомога
           </a>
           <button className="nav-button">
             <span className="nav-button-icon"></span>
@@ -57,10 +57,10 @@ const Navbar = () => {
               href="https://shop.lanadelrey.polydor.co.uk/?utm_campaign=LanaDelRey20190730&utm_content=&utm_medium=owned&utm_source=Website&utm_linkurl=Lana.lnk.to%2FStore&utm_board=lana-del-rey&utm_country=GB&utm_referrer=www.lanadelrey.com%2F"
               target="_blank"
               rel="noreferrer"
-              className="store"
+              className="support"
             >
-              <img src={cart} alt="cart" />
-              щось
+              <img src={support} alt="support" />
+              допомога
             </a>
           </div>
         </div>
