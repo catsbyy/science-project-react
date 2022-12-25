@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import BtnNext from "../components/BtnNext/BtnNext";
 import BtnBack from "../components/BtnBack/BtnBack";
-import { useState } from "react";
 import { education } from "./../helpers/educationOptionsList";
 import { englishLevels } from "./../helpers/englishLevelsList";
 import { positions } from "./../helpers/positionOptionsList";
@@ -11,6 +11,13 @@ import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
 
 const Students = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setData(response.regions));
+  }, []);
   const [student, setStudent] = useState({
     studentSurname: "",
     studentName: "",
@@ -43,9 +50,17 @@ const Students = () => {
   };
 
   const addNewStudent = () => {
+    fetch("/students", {
+      method: "POST",
+      body: JSON.stringify(student),
+    }).then((e) => {
+      console.log(e);
+    });
     console.log("created student", student);
   };
 
+  //console.log(data);
+  console.log(student);
   return (
     <main className="students-body">
       <div className="container">
@@ -136,7 +151,13 @@ const Students = () => {
                     <option disabled selected>
                       Оберіть вашу область
                     </option>
-                    <option>Київська</option>
+                    {data.map((region) => {
+                      return (
+                        <option key={region.id} value={region.id}>
+                          {region.region_name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
 
@@ -354,7 +375,7 @@ const Students = () => {
                 <BtnBack />
 
                 <NavLink to="/success">
-                  <button className="sumbit">
+                  <button className="sumbit" onClick={addNewStudent}>
                     <span className="btnText">Підтвердити</span>
                     <i className="uil uil-navigator"></i>
                   </button>

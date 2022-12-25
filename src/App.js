@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./styles/main.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -17,7 +18,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <ScrollToTop/>
+        
+        <ScrollToTop />
         <Header />
         <Navbar />
 
