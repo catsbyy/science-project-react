@@ -11,13 +11,18 @@ import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
 
 const Students = () => {
-  const [data, setData] = useState([]);
+  const [regions, setRegions] = useState([]);
+  const [techAndTools, setTechAndTools] = useState([]);
 
   useEffect(() => {
     fetch("/server")
       .then((response) => response.json())
-      .then((response) => setData(response.regions));
+      .then((response) => setRegions(response.regions));
+      fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setTechAndTools(response.techAndTools));
   }, []);
+  
   const [student, setStudent] = useState({
     studentSurname: "",
     studentName: "",
@@ -151,7 +156,7 @@ const Students = () => {
                     <option disabled selected>
                       Оберіть вашу область
                     </option>
-                    {data.map((region) => {
+                    {regions.map((region) => {
                       return (
                         <option key={region.id} value={region.id}>
                           {region.region_name}
@@ -269,7 +274,13 @@ const Students = () => {
                     <option disabled selected>
                       Технології та інструменти
                     </option>
-                    <option>Київська</option>
+                    {techAndTools.map((techAndTool) => {
+                      return (
+                        <option key={techAndTool.id} value={techAndTool.id}>
+                          {techAndTool.name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
 

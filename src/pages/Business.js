@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { education } from "./../helpers/educationOptionsList";
 import { englishLevels } from "./../helpers/englishLevelsList";
 import { positions } from "./../helpers/positionOptionsList";
@@ -8,6 +8,18 @@ import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
 
 const Business = () => {
+  const [regions, setRegions] = useState([]);
+  const [techAndTools, setTechAndTools] = useState([]);
+
+  useEffect(() => {
+    fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setRegions(response.regions));
+      fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setTechAndTools(response.techAndTools));
+  }, []);
+
   const [student, setStudent] = useState({
     studentRegion: "",
     studentCity: "",
@@ -89,7 +101,13 @@ const Business = () => {
                     <option disabled selected>
                       Технології та інструменти
                     </option>
-                    <option>Київська</option>
+                    {techAndTools.map((techAndTool) => {
+                      return (
+                        <option key={techAndTool.id} value={techAndTool.id}>
+                          {techAndTool.name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
 
@@ -126,10 +144,16 @@ const Business = () => {
                 <div className="input-field">
                   <label>Область</label>
                   <select required name="studentRegion" onChange={handleChange}>
-                    <option disabled selected>
+                    <option key="" selected>
                       Оберіть вашу область
                     </option>
-                    <option>Київська</option>
+                    {regions.map((region) => {
+                      return (
+                        <option key={region.id} value={region.id}>
+                          {region.region_name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
 
@@ -141,7 +165,7 @@ const Business = () => {
                 <div className="input-field">
                   <label>Місце роботи</label>
                   <select name="studentWorkplace" onChange={handleChange}>
-                    <option disabled selected>
+                    <option key="" selected>
                       Оберіть місце роботи
                     </option>
                     {workplaces.map((workplace, index) => {
@@ -153,7 +177,7 @@ const Business = () => {
                 <div className="input-field">
                   <label>Заробітна плата</label>
                   <select name="studentSalary" onChange={handleChange}>
-                    <option disabled selected>
+                    <option key="" selected>
                       Оберіть заробітну плату ($)
                     </option>
                     {salaries.map((salary, index) => {
