@@ -27,7 +27,7 @@ const Navbar = () => {
           </div>
 
           <a
-            href="https://shop.lanadelrey.polydor.co.uk/?utm_campaign=LanaDelRey20190730&utm_content=&utm_medium=owned&utm_source=Website&utm_linkurl=Lana.lnk.to%2FStore&utm_board=lana-del-rey&utm_country=GB&utm_referrer=www.lanadelrey.com%2F"
+            href="https://www.google.com.ua/"
             target="_blank"
             rel="noreferrer"
             className="support"
@@ -54,7 +54,7 @@ const Navbar = () => {
               </ul>
             </div>
             <a
-              href="https://shop.lanadelrey.polydor.co.uk/?utm_campaign=LanaDelRey20190730&utm_content=&utm_medium=owned&utm_source=Website&utm_linkurl=Lana.lnk.to%2FStore&utm_board=lana-del-rey&utm_country=GB&utm_referrer=www.lanadelrey.com%2F"
+              href="https://www.google.com.ua/"
               target="_blank"
               rel="noreferrer"
               className="support"
