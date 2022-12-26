@@ -5,7 +5,7 @@ const SuccessfulRegistration = () => {
         <article className="main-section">
           <h1 className="landing-title">Ваша анкета успішно збережена!</h1>
           <div className="main-section-wrapper">
-            <p>Роботодавець зможе зв'язатися з Вами, якщо Ви підійдете під його вимоги</p>
+            <p>Роботодавець зв'яжеться з Вами, якщо Ви підійдете його вимогам</p>
             <a href="/">
               <button>Повернутися на головну сторінку</button>
             </a>

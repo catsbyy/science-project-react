@@ -25,7 +25,7 @@ const Students = () => {
   }, []);
 
   const techAndToolsOptions = [];
-  techAndTools.forEach(techAndTool => {
+  techAndTools.forEach((techAndTool) => {
     const item = {
       value: `${techAndTool.id}`,
       label: `${techAndTool.name}`,
@@ -70,17 +70,24 @@ const Students = () => {
   };
 
   const addNewStudent = () => {
+    let technologies = "";
+    selectedTechAndToolsOptions.forEach((item) => {
+      technologies += `${item.value};`;
+    });
+    student.studentTechAndTools = technologies;
     fetch("/students", {
       method: "POST",
       body: JSON.stringify(student),
+      headers: {
+        "Content-Type": "application/json",
+      },
     }).then((e) => {
       console.log(e);
     });
+    console.log(JSON.stringify(student));
     console.log("created student", student);
   };
 
-  //console.log(data);
-  console.log(student);
   return (
     <main className="students-body">
       <div className="container">
@@ -280,6 +287,7 @@ const Students = () => {
                 <div className="input-field" id="input-field-technologies">
                   <label>Технології та інструменти *</label>
                   <Select
+                    className="custom-selection"
                     options={techAndToolsOptions}
                     placeholder="Технології та інструменти"
                     id="studentTechAndTools"
@@ -290,7 +298,7 @@ const Students = () => {
                     isSearchable={true}
                     isMulti
                   />
-                  <select
+                  {/*<select
                     id="studentTechAndTools"
                     name="studentTechAndTools"
                     placeholder="Технології та інструменти"
@@ -307,7 +315,7 @@ const Students = () => {
                         </option>
                       );
                     })}
-                  </select>
+                  </select>*/}
                 </div>
 
                 <div className="input-field">

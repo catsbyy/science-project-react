@@ -202,6 +202,15 @@ form .fields .input-field{
     font-weight: 500;
     color: #2e2e2e;
 }
+
+.custom-selection{
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 5px;
+}
+
 .input-field input, select{
     outline: none;
     font-size: 14px;
@@ -214,11 +223,11 @@ form .fields .input-field{
     margin: 8px 0;
 }
 
-.input-field input:is(:focus), .input-field select:is(:focus) {
+.input-field input:is(:focus), .input-field select:is(:focus), .custom-selection:is(focus) {
     box-shadow: 0 3px 6px rgba(0,0,0,0.13);
 }
 
-.input-field select,
+.input-field select, .custom-selection,
 .input-field input[type="date"]{
     color: #707070;
 }
