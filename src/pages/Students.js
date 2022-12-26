@@ -9,6 +9,7 @@ import { workExps } from "./../helpers/workExpOptionsList";
 import { workAreas } from "./../helpers/workAreaOptionsList";
 import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
+import Select from "react-select";
 
 const Students = () => {
   const [regions, setRegions] = useState([]);
@@ -18,11 +19,25 @@ const Students = () => {
     fetch("/server")
       .then((response) => response.json())
       .then((response) => setRegions(response.regions));
-      fetch("/server")
+    fetch("/server")
       .then((response) => response.json())
       .then((response) => setTechAndTools(response.techAndTools));
   }, []);
-  
+
+  const techAndToolsOptions = [];
+  techAndTools.forEach(techAndTool => {
+    const item = {
+      value: `${techAndTool.id}`,
+      label: `${techAndTool.name}`,
+    };
+    techAndToolsOptions.push(item);
+  });
+
+  const [selectedTechAndToolsOptions, setSelectedTechAndToolsOptions] = useState();
+  function handleSelect(data) {
+    setSelectedTechAndToolsOptions(data);
+  }
+
   const [student, setStudent] = useState({
     studentSurname: "",
     studentName: "",
@@ -264,6 +279,17 @@ const Students = () => {
 
                 <div className="input-field" id="input-field-technologies">
                   <label>Технології та інструменти *</label>
+                  <Select
+                    options={techAndToolsOptions}
+                    placeholder="Технології та інструменти"
+                    id="studentTechAndTools"
+                    name="studentTechAndTools"
+                    required
+                    onChange={handleSelect}
+                    value={selectedTechAndToolsOptions}
+                    isSearchable={true}
+                    isMulti
+                  />
                   <select
                     id="studentTechAndTools"
                     name="studentTechAndTools"
