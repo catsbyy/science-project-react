@@ -6,6 +6,7 @@ import { workExps } from "./../helpers/workExpOptionsList";
 import { workAreas } from "./../helpers/workAreaOptionsList";
 import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
+import { NavLink } from "react-router-dom";
 
 const Business = () => {
   const [regions, setRegions] = useState([]);
@@ -187,10 +188,12 @@ const Business = () => {
                 </div>
               </div>
 
-              <button className="sumbit">
-                <span className="btnText">Знайти</span>
-                <i className="uil uil-search"></i>
-              </button>
+              <NavLink to="/results">
+                  <button className="sumbit" >
+                    <span className="btnText">Знайти</span>
+                    <i className="uil uil-search"></i>
+                  </button>
+                </NavLink>
             </div>
           </div>
         </form>
