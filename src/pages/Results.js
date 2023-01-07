@@ -5,19 +5,27 @@ import StudentCard from "../components/results/StudentCard";
 
 const Results = () => {
     const [students, setStudents] = useState([]);
+    const [techAndTools, setTechAndTools] = useState([]);
   
     useEffect(() => {
       fetch("/get-results")
         .then((response) => response.json())
         .then((response) => setStudents(response.students));
+        fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setTechAndTools(response.techAndTools));
     }, []);
 
-    console.log("students", students);
   return (
+    
     <main className="results-body">
-        {students.map((student) => {
-            return (<StudentCard key={student.id} student={student}/>)
+      <h2 className="landing-title">Рекомендовані кандидати</h2>
+      <ul className="result-students">
+      {students.map((student) => {
+            return (<StudentCard key={student.id} student={student} techAndToolsData={techAndTools}/>)
           })}
+      </ul>
+        
     </main>
   );
 };

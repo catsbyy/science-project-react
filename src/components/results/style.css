@@ -1,13 +1,7 @@
 /*  RESULTS  */
 
-.results-body {
-    background: #edeff0;
-    background-position: center;
-    display: flex;
-    align-items: center;
-  }
-  
   .result-card {
+    border-radius: 10px;
     padding: 30px 0 40px;
     margin-bottom: 30px;
     margin-right: 40px;
@@ -19,6 +13,7 @@
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+    cursor: pointer;
   }
   
   .result-card .picture {
@@ -119,4 +114,24 @@
   .result-card .result-social li a:hover {
     color: #4070f4;
     background-color: #f7f5ec;
+  }
+
+  .skills-section {
+    list-style: none;
+    margin-top: 5px;
+    display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	column-gap: 5px;
+	row-gap: 5px;
+  }
+  
+  .skills-section li {
+    background: #648cf4;
+    opacity: 0.75;
+    color: white;
+    border-radius: 8px;
+    padding: 4px 8px;
+    display: inline-block;
+    font-size: 15px;
   }

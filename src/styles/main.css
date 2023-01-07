@@ -43,6 +43,9 @@ a {
   font-weight: 500;
   font-size: 22px;
   height: 590px;
+  display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .landing-title {
@@ -124,6 +127,11 @@ a {
     background: #edeff0; 
     /* background: #4070f4; */
 }
+
+.results-body {
+  background: #edeff0;
+}
+
 .container{
     position: relative;
     max-width: 1200px;
@@ -271,6 +279,15 @@ form .buttons{
 }
 form .buttons button , .backBtn{
     margin-right: 14px;
+}
+
+.result-students {
+  margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	column-gap: 10px;
+	row-gap: 20px;
 }
 
 @media (max-width: 750px) {

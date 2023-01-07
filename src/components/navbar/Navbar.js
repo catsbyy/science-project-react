@@ -4,6 +4,7 @@ import "./style.css";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  
   return (
     <nav className="nav-wrapper">
       <div className="container-wide">
