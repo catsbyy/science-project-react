@@ -12,16 +12,18 @@ const Student = () => {
   useEffect(() => {
     fetch("/get-student-details")
       .then((response) => response.json())
-      .then((response) => setStudent(response.student));
+      .then((response) => setStudent(response.student[0]));
     //fetch("/server")
-    // .then((response) => response.json())
-     // .then((response) => setTechAndTools(response.techAndTools));
+    //  .then((response) => response.json())
+    //  .then((response) => setTechAndTools(response.techAndTools));
   }, []);
 
-  console.log(student);
 
   const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
-  const englishLevel = "A1";
+
+  
+  console.log(student.english_level);
+  const englishLevel = "C2";
   //student.english_level.split(" - ")[1];
   const techAndToolsIds = [];
   //student.technologies_and_tools.split(";").filter(function (el) {
@@ -29,7 +31,7 @@ const Student = () => {
   //}).map(Number);
 
   let techAndToolsNames = [];
-  //techAndTools.filter(item => techAndToolsIds.includes(item.id));
+  techAndTools.filter(item => techAndToolsIds.includes(item.id));
 
   let workExp = "";
   switch (student.work_experience) {
