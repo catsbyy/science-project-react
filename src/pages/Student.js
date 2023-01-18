@@ -58,7 +58,7 @@ const Student = () => {
   }
 
   return (
-    <main>
+    <main className="profile-page">
       <div>
         <div className="result-card">
           <div className="picture">
