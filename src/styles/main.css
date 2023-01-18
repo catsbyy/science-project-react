@@ -295,16 +295,14 @@ form .buttons button , .backBtn{
   display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+  height: 600px;
 }
 
-.result-card {
+.profile-card {
   border-radius: 10px;
   padding: 30px 0 40px;
-  margin-bottom: 30px;
-  margin-right: 40px;
-  margin-left: 40px;
-  width: 400px;
-  height: 464px;
+  width: 100%;
+  height: 100%;
   background-color: #fff;
   text-align: center;
   overflow: hidden;
@@ -313,7 +311,7 @@ form .buttons button , .backBtn{
   cursor: pointer;
 }
 
-.result-card .picture {
+.profile-card .profile-picture {
   display: inline-block;
   height: 130px;
   width: 130px;
@@ -322,7 +320,7 @@ form .buttons button , .backBtn{
   position: relative;
 }
 
-.result-card .picture::before {
+.profile-card .profile-picture::before {
   content: "";
   width: 120%;
   height: 0;
@@ -337,11 +335,11 @@ form .buttons button , .backBtn{
   transition: all 0.3s linear 0s;
 }
 
-.result-card:hover .picture::before {
+.profile-card:hover .profile-picture::before {
   height: 100%;
 }
 
-.result-card .picture::after {
+.profile-card .profile-picture::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -353,7 +351,7 @@ form .buttons button , .backBtn{
   z-index: -1;
 }
 
-.result-card .picture img {
+.profile-card .profile-picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -362,25 +360,25 @@ form .buttons button , .backBtn{
   transition: all 0.9s ease 0s;
 }
 
-.result-card:hover .picture img {
+.profile-card:hover .profile-picture img {
   box-shadow: 0 0 0 14px #f7f5ec;
   transform: scale(0.7);
 }
 
-.result-card .position {
+.profile-card .profile-position {
   display: block;
   font-size: 15px;
   color: #4e5052;
   text-transform: capitalize;
 }
-.result-card .info {
+.profile-card .profile-info {
   display: block;
   font-size: 15px;
   color: #4e5052;
   font-weight: 600;
 }
 
-.result-card .result-social {
+.profile-card .profile-social {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -391,15 +389,15 @@ form .buttons button , .backBtn{
   transition: all 0.5s ease 0s;
 }
 
-.result-card:hover .result-social {
+.profile-card:hover .profile-social {
   bottom: 0;
 }
 
-.result-card .result-social li {
+.profile-card .profile-social li {
   display: inline-block;
 }
 
-.result-card .result-social li a {
+.profile-card .profile-social li a {
   display: block;
   padding: 25px;
   font-size: 17px;
@@ -408,12 +406,12 @@ form .buttons button , .backBtn{
   text-decoration: none;
 }
 
-.result-card .result-social li a:hover {
+.profile-card .profile-social li a:hover {
   color: #4070f4;
   background-color: #f7f5ec;
 }
 
-.skills-section {
+.profile-skills-section {
   list-style: none;
   margin-top: 5px;
   display: flex;
@@ -423,7 +421,7 @@ column-gap: 5px;
 row-gap: 5px;
 }
 
-.skills-section li {
+.profile-skills-section li {
   background: #648cf4;
   opacity: 0.75;
   color: white;

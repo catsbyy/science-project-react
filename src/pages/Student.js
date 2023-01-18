@@ -60,29 +60,29 @@ const Student = () => {
   return (
     <main className="profile-page">
       <div>
-        <div className="result-card">
-          <div className="picture">
-            <img className="img-fluid" src={student.profile_picture} />
+        <div className="profile-card">
+          <div className="profile-picture">
+            <img className="profile-img-fluid" src={student.profile_picture} />
           </div>
-          <div className="result-content">
-            <h3 className="name">
+          <div className="profile-content">
+            <h3 className="profile-name">
               {student.surname} {student.name}
             </h3>
-            <h4 className="position">{student.position}</h4>
-            <p className="info">
+            <h4 className="profile-position">{student.position}</h4>
+            <p className="profile-info">
               &#128187; {student.work_area} / &#128188; {workExp} / <ReactCountryFlag countryCode="GB" svg />{" "}
               {englishLevel}
             </p>
           </div>
 
           <br />
-          <p className="result-summary">{student.summary}</p>
-          <ul className="skills-section">
+          <p className="profile-summary">{student.summary}</p>
+          <ul className="profile-skills-section">
             {techAndToolsNames.map((techAndTool) => {
               return <li key={techAndTool.id}>{techAndTool.name}</li>;
             })}
           </ul>
-          <ul className="result-social">
+          <ul className="profile-social">
             <li>
               <a href={mobileNumber} className="fa fa-phone" aria-hidden="true"></a>
             </li>
