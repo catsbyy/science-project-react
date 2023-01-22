@@ -30,11 +30,9 @@ const Navbar = () => {
           <a
             href="https://www.google.com.ua/"
             target="_blank"
-            rel="noreferrer"
             className="support"
           >
             <img src={support} alt="support" />
-            допомога
           </a>
           <button className="nav-button">
             <span className="nav-button-icon"></span>
@@ -61,7 +59,6 @@ const Navbar = () => {
               className="support"
             >
               <img src={support} alt="support" />
-              допомога
             </a>
           </div>
         </div>
