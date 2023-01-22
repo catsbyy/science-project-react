@@ -6,9 +6,16 @@ import { workExps } from "./../helpers/workExpOptionsList";
 import { workAreas } from "./../helpers/workAreaOptionsList";
 import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams, useNavigate, createSearchParams } from "react-router-dom";
 
 const Business = () => {
+  const navigate = useNavigate();
+  const goToResults = () => {
+    navigate({
+      pathname: '/results',
+      search: `?${createSearchParams(Object.fromEntries(Object.entries(student).filter(([key, value]) => value != "")))}`,
+    });
+  };
   const [regions, setRegions] = useState([]);
   const [techAndTools, setTechAndTools] = useState([]);
 
@@ -189,12 +196,12 @@ const Business = () => {
                 </div>
               </div>
 
-              <NavLink to="/results">
-                  <button className="sumbit" >
+              
+                  <button className="sumbit" onClick={goToResults} type="submit">
                     <span className="btnText">Знайти</span>
                     <i className="uil uil-search"></i>
                   </button>
-                </NavLink>
+                
             </div>
           </div>
         </form>
