@@ -38,8 +38,6 @@ const Students = () => {
     setSelectedTechAndToolsOptions(data);
   }
 
-  const [isFirstForm, setFirstForm] = useState(true);
-
   const [student, setStudent] = useState({
     studentSurname: "",
     studentName: "",
@@ -244,7 +242,7 @@ const Students = () => {
                 </div>
               </div>
 
-              <BtnNext onClick={() => setFirstForm(false)}/>
+              <BtnNext/>
             </div>
           </div>
 
@@ -419,7 +417,7 @@ const Students = () => {
               </div>
 
               <div className="buttons">
-                <BtnBack onClick={() => setFirstForm(true)}/>
+                <BtnBack/>
 
                 <NavLink to="/success">
                   <button className="sumbit" onClick={addNewStudent}>

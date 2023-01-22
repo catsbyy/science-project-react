@@ -161,7 +161,7 @@ const Business = () => {
 
                 <div className="input-field">
                   <label>Місто</label>
-                  <input name="studentCity" type="text" placeholder="Введіть місто" onChange={handleChange} defaultValue={0}/>
+                  <input name="studentCity" type="text" placeholder="Введіть місто" onChange={handleChange}/>
                 </div>
 
                 <div className="input-field">

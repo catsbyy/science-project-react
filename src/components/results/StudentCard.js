@@ -4,6 +4,8 @@ import ReactCountryFlag from "react-country-flag";
 import { workExps } from "./../../helpers/workExpOptionsList";
 
 const StudentCard = ({ student, techAndToolsData }) => {
+
+  console.log(student);
   const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
   const englishLevel = student.english_level.split(" - ")[1];
   const techAndToolsIds = student.technologies_and_tools
