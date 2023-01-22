@@ -56,36 +56,36 @@ const Business = () => {
               <div className="fields">
                 <div className="input-field">
                   <label>Посада *</label>
-                  <select name="studentPosition" required onChange={handleChange}>
-                    <option disabled selected>
+                  <select name="studentPosition" required onChange={handleChange} defaultValue={0}>
+                    <option disabled value={0}>
                       Оберіть необхідну посаду
                     </option>
                     {positions.map((position, index) => {
-                      return <option>{position}</option>;
+                      return <option key={index}>{position}</option>;
                     })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Область роботи *</label>
-                  <select name="studentWorkArea" required onChange={handleChange}>
-                    <option disabled selected>
+                  <select name="studentWorkArea" required onChange={handleChange} defaultValue={0}>
+                    <option disabled value={0}>
                       Оберіть область роботи
                     </option>
                     {workAreas.map((workArea, index) => {
-                      return <option>{workArea}</option>;
+                      return <option key={index}>{workArea}</option>;
                     })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Досвід роботи *</label>
-                  <select name="studentWorkExp" required onChange={handleChange}>
-                    <option disabled selected>
+                  <select name="studentWorkExp" required onChange={handleChange} defaultValue={0}>
+                    <option disabled value={0}>
                       Оберіть досвід роботи
                     </option>
                     {workExps.map((workExp, index) => {
-                      return <option>{workExp}</option>;
+                      return <option key={index}>{workExp}</option>;
                     })}
                   </select>
                 </div>
@@ -97,9 +97,10 @@ const Business = () => {
                     name="studentTechAndTools"
                     placeholder="Технології та інструменти"
                     required
-                    onChange={handleChange}
+                    onChange={handleChange} 
+                    defaultValue={0}
                   >
-                    <option disabled selected>
+                    <option disabled value={0}>
                       Технології та інструменти
                     </option>
                     {techAndTools.map((techAndTool) => {
@@ -114,24 +115,24 @@ const Business = () => {
 
                 <div className="input-field">
                   <label>Рівень англійської *</label>
-                  <select required name="studentEnglish" onChange={handleChange}>
-                    <option disabled selected>
+                  <select required name="studentEnglish" onChange={handleChange} defaultValue={0}>
+                    <option disabled value={0}>
                       Оберіть рівень англійської
                     </option>
                     {englishLevels.map((level, index) => {
-                      return <option>{level}</option>;
+                      return <option key={index}>{level}</option>;
                     })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Рівень освіти *</label>
-                  <select required name="studentEducation" onChange={handleChange}>
-                    <option disabled selected>
+                  <select required name="studentEducation" onChange={handleChange} defaultValue={0}>
+                    <option disabled value={0}>
                       Оберіть рівень освіти
                     </option>
                     {education.map((eduOption, index) => {
-                      return <option>{eduOption}</option>;
+                      return <option key={index}>{eduOption}</option>;
                     })}
                   </select>
                 </div>
@@ -144,8 +145,8 @@ const Business = () => {
               <div className="fields">
                 <div className="input-field">
                   <label>Область</label>
-                  <select required name="studentRegion" onChange={handleChange}>
-                    <option key="" selected>
+                  <select required name="studentRegion" onChange={handleChange} defaultValue={0}>
+                    <option value={0}>
                       Оберіть вашу область
                     </option>
                     {regions.map((region) => {
@@ -160,29 +161,29 @@ const Business = () => {
 
                 <div className="input-field">
                   <label>Місто</label>
-                  <input name="studentCity" type="text" placeholder="Введіть місто" onChange={handleChange} />
+                  <input name="studentCity" type="text" placeholder="Введіть місто" onChange={handleChange} defaultValue={0}/>
                 </div>
 
                 <div className="input-field">
                   <label>Місце роботи</label>
                   <select name="studentWorkplace" onChange={handleChange}>
-                    <option key="" selected>
+                    <option value={0}>
                       Оберіть місце роботи
                     </option>
                     {workplaces.map((workplace, index) => {
-                      return <option>{workplace}</option>;
+                      return <option key={index}>{workplace}</option>;
                     })}
                   </select>
                 </div>
 
                 <div className="input-field">
                   <label>Заробітна плата</label>
-                  <select name="studentSalary" onChange={handleChange}>
-                    <option key="" selected>
+                  <select name="studentSalary" onChange={handleChange} defaultValue={0}>
+                    <option value={0}>
                       Оберіть заробітну плату ($)
                     </option>
                     {salaries.map((salary, index) => {
-                      return <option>{salary}</option>;
+                      return <option key={index}>{salary}</option>;
                     })}
                   </select>
                 </div>

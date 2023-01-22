@@ -6,11 +6,12 @@ import { workExps } from "../helpers/workExpOptionsList";
 
 const Student = () => {
   const { id } = useParams();
-  const [student, setStudent] = useState([]);
+  const [student, setStudent] = useState({});
   const [techAndTools, setTechAndTools] = useState([]);
 
   useEffect(() => {
-    fetch("/get-student-details")
+    console.log(id);
+    fetch(`/get-student-details/${id}`)
       .then((response) => response.json())
       .then((response) => setStudent(response.student[0]));
     //fetch("/server")
@@ -21,10 +22,9 @@ const Student = () => {
 
   const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
 
-  
   console.log(student.english_level);
   const englishLevel = "C2";
-  //student.english_level.split(" - ")[1];
+  //student?.english_level?.split(" - ")[1];
   const techAndToolsIds = [];
   //student.technologies_and_tools.split(";").filter(function (el) {
   //  return el != ""

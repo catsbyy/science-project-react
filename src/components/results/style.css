@@ -16,6 +16,10 @@
     cursor: pointer;
   }
   
+  .result-card-link {
+    display: block;
+  }
+
   .result-card .picture {
     display: inline-block;
     height: 130px;

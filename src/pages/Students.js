@@ -38,6 +38,8 @@ const Students = () => {
     setSelectedTechAndToolsOptions(data);
   }
 
+  const [isFirstForm, setFirstForm] = useState(true);
+
   const [student, setStudent] = useState({
     studentSurname: "",
     studentName: "",
@@ -242,7 +244,7 @@ const Students = () => {
                 </div>
               </div>
 
-              <BtnNext />
+              <BtnNext onClick={() => setFirstForm(false)}/>
             </div>
           </div>
 
@@ -258,7 +260,7 @@ const Students = () => {
                       Оберіть рівень освіти
                     </option>
                     {education.map((eduOption, index) => {
-                      return <option>{eduOption}</option>;
+                      return <option key={index}>{eduOption}</option>;
                     })}
                   </select>
                 </div>
@@ -325,7 +327,7 @@ const Students = () => {
                       Оберіть рівень англійської
                     </option>
                     {englishLevels.map((level, index) => {
-                      return <option>{level}</option>;
+                      return <option key={index}>{level}</option>;
                     })}
                   </select>
                 </div>
@@ -352,7 +354,7 @@ const Students = () => {
                       Оберіть посаду
                     </option>
                     {positions.map((position, index) => {
-                      return <option>{position}</option>;
+                      return <option key={index}>{position}</option>;
                     })}
                   </select>
                 </div>
@@ -364,7 +366,7 @@ const Students = () => {
                       Оберіть досвід роботи
                     </option>
                     {workExps.map((workExp, index) => {
-                      return <option>{workExp}</option>;
+                      return <option key={index}>{workExp}</option>;
                     })}
                   </select>
                 </div>
@@ -376,7 +378,7 @@ const Students = () => {
                       Оберіть область роботи
                     </option>
                     {workAreas.map((workArea, index) => {
-                      return <option>{workArea}</option>;
+                      return <option key={index}>{workArea}</option>;
                     })}
                   </select>
                 </div>
@@ -388,7 +390,7 @@ const Students = () => {
                       Оберіть заробітну плату ($)
                     </option>
                     {salaries.map((salary, index) => {
-                      return <option>{salary}</option>;
+                      return <option key={index}>{salary}</option>;
                     })}
                   </select>
                 </div>
@@ -400,7 +402,7 @@ const Students = () => {
                       Оберіть місце роботи
                     </option>
                     {workplaces.map((workplace, index) => {
-                      return <option>{workplace}</option>;
+                      return <option key={index}>{workplace}</option>;
                     })}
                   </select>
                 </div>
@@ -417,7 +419,7 @@ const Students = () => {
               </div>
 
               <div className="buttons">
-                <BtnBack />
+                <BtnBack onClick={() => setFirstForm(true)}/>
 
                 <NavLink to="/success">
                   <button className="sumbit" onClick={addNewStudent}>
