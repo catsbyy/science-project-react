@@ -7,10 +7,16 @@ import { workAreas } from "./../helpers/workAreaOptionsList";
 import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
 import { NavLink, useSearchParams, useNavigate, createSearchParams } from "react-router-dom";
+import Select from "react-select";
 
 const Business = () => {
   const navigate = useNavigate();
   const goToResults = () => {
+    let technologies = "";
+    selectedTechAndToolsOptions.forEach((item) => {
+      technologies += `${item.value};`;
+    });
+    student.studentTechAndTools = technologies;
     navigate({
       pathname: '/results',
       search: `?${createSearchParams(Object.fromEntries(Object.entries(student).filter(([key, value]) => value != "")))}`,
@@ -18,6 +24,19 @@ const Business = () => {
   };
   const [regions, setRegions] = useState([]);
   const [techAndTools, setTechAndTools] = useState([]);
+
+  const techAndToolsOptions = [];
+  techAndTools.forEach((techAndTool) => {
+    const item = {
+      value: `${techAndTool.id}`,
+      label: `${techAndTool.name}`,
+    };
+    techAndToolsOptions.push(item);
+  });
+  const [selectedTechAndToolsOptions, setSelectedTechAndToolsOptions] = useState();
+  function handleSelect(data) {
+    setSelectedTechAndToolsOptions(data);
+  }
 
   useEffect(() => {
     fetch("/server")
@@ -62,7 +81,7 @@ const Business = () => {
 
               <div className="fields">
                 <div className="input-field">
-                  <label>Посада *</label>
+                  <label>Посада</label>
                   <select name="studentPosition" required onChange={handleChange} defaultValue={0}>
                     <option disabled value={0}>
                       Оберіть необхідну посаду
@@ -74,7 +93,7 @@ const Business = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Область роботи *</label>
+                  <label>Область роботи</label>
                   <select name="studentWorkArea" required onChange={handleChange} defaultValue={0}>
                     <option disabled value={0}>
                       Оберіть область роботи
@@ -86,7 +105,7 @@ const Business = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Досвід роботи *</label>
+                  <label>Досвід роботи</label>
                   <select name="studentWorkExp" required onChange={handleChange} defaultValue={0}>
                     <option disabled value={0}>
                       Оберіть досвід роботи
@@ -98,30 +117,23 @@ const Business = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Технології та інструменти *</label>
-                  <select
+                  <label>Технології та інструменти</label>
+                  <Select
+                    className="custom-selection"
+                    options={techAndToolsOptions}
+                    placeholder="Технології та інструменти"
                     id="studentTechAndTools"
                     name="studentTechAndTools"
-                    placeholder="Технології та інструменти"
                     required
-                    onChange={handleChange} 
-                    defaultValue={0}
-                  >
-                    <option disabled value={0}>
-                      Технології та інструменти
-                    </option>
-                    {techAndTools.map((techAndTool) => {
-                      return (
-                        <option key={techAndTool.id} value={techAndTool.id}>
-                          {techAndTool.name}
-                        </option>
-                      );
-                    })}
-                  </select>
+                    onChange={handleSelect}
+                    value={selectedTechAndToolsOptions}
+                    isSearchable={true}
+                    isMulti
+                  />
                 </div>
 
                 <div className="input-field">
-                  <label>Рівень англійської *</label>
+                  <label>Рівень англійської</label>
                   <select required name="studentEnglish" onChange={handleChange} defaultValue={0}>
                     <option disabled value={0}>
                       Оберіть рівень англійської
@@ -133,7 +145,7 @@ const Business = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Рівень освіти *</label>
+                  <label>Рівень освіти </label>
                   <select required name="studentEducation" onChange={handleChange} defaultValue={0}>
                     <option disabled value={0}>
                       Оберіть рівень освіти
