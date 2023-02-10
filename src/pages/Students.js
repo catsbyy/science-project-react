@@ -258,7 +258,7 @@ const Students = () => {
                       Оберіть рівень освіти
                     </option>
                     {education.map((eduOption, index) => {
-                      return <option key={index} value={index}>{eduOption}</option>;
+                      return <option key={index} value={index + 1}>{eduOption}</option>;
                     })}
                   </select>
                 </div>
@@ -325,7 +325,7 @@ const Students = () => {
                       Оберіть рівень англійської
                     </option>
                     {englishLevels.map((level, index) => {
-                      return <option key={index} value={index}>{level}</option>;
+                      return <option key={index} value={index + 1}>{level}</option>;
                     })}
                   </select>
                 </div>
@@ -352,7 +352,7 @@ const Students = () => {
                       Оберіть посаду
                     </option>
                     {positions.map((position, index) => {
-                      return <option key={index} value={index}>{position}</option>;
+                      return <option key={index} value={index + 1}>{position}</option>;
                     })}
                   </select>
                 </div>
@@ -364,7 +364,7 @@ const Students = () => {
                       Оберіть досвід роботи
                     </option>
                     {workExps.map((workExp, index) => {
-                      return <option key={index} value={index}>{workExp}</option>;
+                      return <option key={index} value={index + 1}>{workExp}</option>;
                     })}
                   </select>
                 </div>
@@ -376,7 +376,7 @@ const Students = () => {
                       Оберіть область роботи
                     </option>
                     {workAreas.map((workArea, index) => {
-                      return <option key={index} value={index}>{workArea}</option>;
+                      return <option key={index} value={index + 1}>{workArea}</option>;
                     })}
                   </select>
                 </div>
@@ -388,7 +388,7 @@ const Students = () => {
                       Оберіть заробітну плату ($)
                     </option>
                     {salaries.map((salary, index) => {
-                      return <option key={index} value={index}>{salary}</option>;
+                      return <option key={index} value={index + 1}>{salary}</option>;
                     })}
                   </select>
                 </div>
@@ -400,7 +400,7 @@ const Students = () => {
                       Оберіть місце роботи
                     </option>
                     {workplaces.map((workplace, index) => {
-                      return <option key={index} value={index}>{workplace}</option>;
+                      return <option key={index} value={index + 1}>{workplace}</option>;
                     })}
                   </select>
                 </div>

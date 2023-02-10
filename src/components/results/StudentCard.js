@@ -11,7 +11,7 @@ import { workplaces } from "./../../helpers/workplaceOptionsList";
 
 const StudentCard = ({ student, techAndToolsData }) => {
   const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
-  const englishLevel = englishLevels[student.english_level_id - 1];
+  const englishLevel = englishLevels[student.english_level_id - 1].split(" - ")[1];
   const techAndToolsIds = student.technologies_and_tools
     .split(";")
     .filter(function (el) {

@@ -14,13 +14,15 @@ const Business = () => {
   const goToResults = () => {
     let technologies = "";
     //if (selectedTechAndToolsOptions !== "" || selectedTechAndToolsOptions !== null)
-   // selectedTechAndToolsOptions.forEach((item) => {
+    // selectedTechAndToolsOptions.forEach((item) => {
     //  technologies += `${item.value};`;
-   // });
+    // });
     student.studentTechAndTools = technologies;
     navigate({
-      pathname: '/results',
-      search: `?${createSearchParams(Object.fromEntries(Object.entries(student).filter(([key, value]) => value != "")))}`,
+      pathname: "/results",
+      search: `?${createSearchParams(
+        Object.fromEntries(Object.entries(student).filter(([key, value]) => value != ""))
+      )}`,
     });
   };
   const [regions, setRegions] = useState([]);
@@ -43,7 +45,7 @@ const Business = () => {
     fetch("/server")
       .then((response) => response.json())
       .then((response) => setRegions(response.regions));
-      fetch("/server")
+    fetch("/server")
       .then((response) => response.json())
       .then((response) => setTechAndTools(response.techAndTools));
   }, []);
@@ -58,7 +60,7 @@ const Business = () => {
     studentWorkExp: "",
     studentWorkArea: "",
     studentSalary: "",
-    studentWorkplace: ""
+    studentWorkplace: "",
   });
 
   const handleChange = (event) => {
@@ -88,7 +90,11 @@ const Business = () => {
                       Оберіть необхідну посаду
                     </option>
                     {positions.map((position, index) => {
-                      return <option key={index} value={index}>{position}</option>;
+                      return (
+                        <option key={index} value={index + 1}>
+                          {position}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -100,7 +106,11 @@ const Business = () => {
                       Оберіть область роботи
                     </option>
                     {workAreas.map((workArea, index) => {
-                      return <option key={index} value={index}>{workArea}</option>;
+                      return (
+                        <option key={index + 1} value={index}>
+                          {workArea}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -112,7 +122,11 @@ const Business = () => {
                       Оберіть досвід роботи
                     </option>
                     {workExps.map((workExp, index) => {
-                      return <option key={index} value={index}>{workExp}</option>;
+                      return (
+                        <option key={index} value={index + 1}>
+                          {workExp}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -139,7 +153,11 @@ const Business = () => {
                       Оберіть рівень англійської
                     </option>
                     {englishLevels.map((level, index) => {
-                      return <option key={index} value={index}>{level}</option>;
+                      return (
+                        <option key={index} value={index + 1}>
+                          {level}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -151,7 +169,11 @@ const Business = () => {
                       Оберіть рівень освіти
                     </option>
                     {education.map((eduOption, index) => {
-                      return <option key={index} value={index}>{eduOption}</option>;
+                      return (
+                        <option key={index} value={index + 1}>
+                          {eduOption}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -165,9 +187,7 @@ const Business = () => {
                 <div className="input-field">
                   <label>Область</label>
                   <select required name="studentRegion" onChange={handleChange} defaultValue={0}>
-                    <option value={0}>
-                      Оберіть вашу область
-                    </option>
+                    <option value={0}>Оберіть вашу область</option>
                     {regions.map((region) => {
                       return (
                         <option key={region.id} value={region.id}>
@@ -180,17 +200,19 @@ const Business = () => {
 
                 <div className="input-field">
                   <label>Місто</label>
-                  <input name="studentCity" type="text" placeholder="Введіть місто" onChange={handleChange}/>
+                  <input name="studentCity" type="text" placeholder="Введіть місто" onChange={handleChange} />
                 </div>
 
                 <div className="input-field">
                   <label>Місце роботи</label>
                   <select name="studentWorkplace" onChange={handleChange}>
-                    <option value={0}>
-                      Оберіть місце роботи
-                    </option>
+                    <option value={0}>Оберіть місце роботи</option>
                     {workplaces.map((workplace, index) => {
-                      return <option key={index} value={index}>{workplace}</option>;
+                      return (
+                        <option key={index} value={index + 1}>
+                          {workplace}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -198,22 +220,22 @@ const Business = () => {
                 <div className="input-field">
                   <label>Заробітна плата</label>
                   <select name="studentSalary" onChange={handleChange} defaultValue={0}>
-                    <option value={0}>
-                      Оберіть заробітну плату ($)
-                    </option>
+                    <option value={0}>Оберіть заробітну плату ($)</option>
                     {salaries.map((salary, index) => {
-                      return <option key={index} value={index}>{salary}</option>;
+                      return (
+                        <option key={index} value={index + 1}>
+                          {salary}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
               </div>
 
-              
-                  <button className="sumbit" onClick={goToResults} type="submit">
-                    <span className="btnText">Знайти</span>
-                    <i className="uil uil-search"></i>
-                  </button>
-                
+              <button className="sumbit" onClick={goToResults} type="submit">
+                <span className="btnText">Знайти</span>
+                <i className="uil uil-search"></i>
+              </button>
             </div>
           </div>
         </form>
