@@ -13,9 +13,10 @@ const Business = () => {
   const navigate = useNavigate();
   const goToResults = () => {
     let technologies = "";
-    selectedTechAndToolsOptions.forEach((item) => {
-      technologies += `${item.value};`;
-    });
+    //if (selectedTechAndToolsOptions !== "" || selectedTechAndToolsOptions !== null)
+   // selectedTechAndToolsOptions.forEach((item) => {
+    //  technologies += `${item.value};`;
+   // });
     student.studentTechAndTools = technologies;
     navigate({
       pathname: '/results',
@@ -87,7 +88,7 @@ const Business = () => {
                       Оберіть необхідну посаду
                     </option>
                     {positions.map((position, index) => {
-                      return <option key={index}>{position}</option>;
+                      return <option key={index} value={index}>{position}</option>;
                     })}
                   </select>
                 </div>
@@ -99,7 +100,7 @@ const Business = () => {
                       Оберіть область роботи
                     </option>
                     {workAreas.map((workArea, index) => {
-                      return <option key={index}>{workArea}</option>;
+                      return <option key={index} value={index}>{workArea}</option>;
                     })}
                   </select>
                 </div>
@@ -111,7 +112,7 @@ const Business = () => {
                       Оберіть досвід роботи
                     </option>
                     {workExps.map((workExp, index) => {
-                      return <option key={index}>{workExp}</option>;
+                      return <option key={index} value={index}>{workExp}</option>;
                     })}
                   </select>
                 </div>
@@ -124,7 +125,6 @@ const Business = () => {
                     placeholder="Технології та інструменти"
                     id="studentTechAndTools"
                     name="studentTechAndTools"
-                    required
                     onChange={handleSelect}
                     value={selectedTechAndToolsOptions}
                     isSearchable={true}
@@ -139,7 +139,7 @@ const Business = () => {
                       Оберіть рівень англійської
                     </option>
                     {englishLevels.map((level, index) => {
-                      return <option key={index}>{level}</option>;
+                      return <option key={index} value={index}>{level}</option>;
                     })}
                   </select>
                 </div>
@@ -151,7 +151,7 @@ const Business = () => {
                       Оберіть рівень освіти
                     </option>
                     {education.map((eduOption, index) => {
-                      return <option key={index}>{eduOption}</option>;
+                      return <option key={index} value={index}>{eduOption}</option>;
                     })}
                   </select>
                 </div>
@@ -190,7 +190,7 @@ const Business = () => {
                       Оберіть місце роботи
                     </option>
                     {workplaces.map((workplace, index) => {
-                      return <option key={index}>{workplace}</option>;
+                      return <option key={index} value={index}>{workplace}</option>;
                     })}
                   </select>
                 </div>
@@ -202,7 +202,7 @@ const Business = () => {
                       Оберіть заробітну плату ($)
                     </option>
                     {salaries.map((salary, index) => {
-                      return <option key={index}>{salary}</option>;
+                      return <option key={index} value={index}>{salary}</option>;
                     })}
                   </select>
                 </div>

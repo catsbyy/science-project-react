@@ -1,12 +1,17 @@
 import "./style.css";
 import { NavLink } from "react-router-dom";
 import ReactCountryFlag from "react-country-flag";
+import { education } from "./../../helpers/educationOptionsList";
+import { englishLevels } from "./../../helpers/englishLevelsList";
+import { positions } from "./../../helpers/positionOptionsList";
 import { workExps } from "./../../helpers/workExpOptionsList";
+import { workAreas } from "./../../helpers/workAreaOptionsList";
+import { salaries } from "./../../helpers/salaryOptionsList";
+import { workplaces } from "./../../helpers/workplaceOptionsList";
 
 const StudentCard = ({ student, techAndToolsData }) => {
-
   const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
-  const englishLevel = student.english_level.split(" - ")[1];
+  const englishLevel = englishLevels[student.english_level_id - 1];
   const techAndToolsIds = student.technologies_and_tools
     .split(";")
     .filter(function (el) {
@@ -16,25 +21,25 @@ const StudentCard = ({ student, techAndToolsData }) => {
 
   let techAndToolsNames = techAndToolsData.filter((item) => techAndToolsIds.includes(item.id));
 
-  let workExp = "";
-  switch (student.work_experience) {
-    case workExps[0]:
+  const studentWorkExpId = student.work_experience_id - 1;
+  let workExp = workExps[studentWorkExpId];
+  switch (studentWorkExpId) {
+    case 0:
       workExp = "без досвіду";
       break;
-    case workExps[2]:
-      workExp = workExps[2] + " рік";
+    case 1:
+    case 3:
+      workExp += " року";
       break;
-    case workExps[1]:
-    case workExps[3]:
-      workExp = workExps[3] + " року";
+    case 2:
+      workExp += " рік";
       break;
-    case workExps[4]:
-    case workExps[5]:
-    case workExps[6]:
-      workExp = workExps[6] + " роки";
+    case 4:
+    case 5:
+      workExp += " роки";
       break;
-    case workExps[7]:
-      workExp = workExps[7] + " років";
+    case 6:
+      workExp += " років";
       break;
     default:
       break;
@@ -49,10 +54,10 @@ const StudentCard = ({ student, techAndToolsData }) => {
           <h3 className="name">
             {student.surname} {student.name}
           </h3>
-          <h4 className="position">{student.position}</h4>
+          <h4 className="position">{positions[student.position_id - 1]}</h4>
           <p className="info">
-            &#128187; {student.work_area} / &#128188; {workExp} / <ReactCountryFlag countryCode="GB" svg />{" "}
-            {englishLevel}
+            &#128187; {workAreas[student.work_area_id - 1]} / &#128188; {workExp} /{" "}
+            <ReactCountryFlag countryCode="GB" svg /> {englishLevel}
           </p>
         </div>
 
