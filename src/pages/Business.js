@@ -56,8 +56,8 @@ const Business = () => {
   });
 
   const goToResults = () => {
-    let technologies = "";
-    console.log(selectedTechAndToolsOptions);
+    let technologies = ""; 
+    
     if (selectedTechAndToolsOptions !== "" && selectedTechAndToolsOptions !== null && selectedTechAndToolsOptions !== undefined)
       selectedTechAndToolsOptions.forEach((item) => {
         technologies += `${item.value};`;
