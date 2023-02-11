@@ -11,44 +11,14 @@ import Select from "react-select";
 
 const Business = () => {
   const navigate = useNavigate();
-  const goToResults = () => {
-    let technologies = "";
-    //if (selectedTechAndToolsOptions !== "" || selectedTechAndToolsOptions !== null)
-    // selectedTechAndToolsOptions.forEach((item) => {
-    //  technologies += `${item.value};`;
-    // });
-    student.studentTechAndTools = technologies;
-    navigate({
-      pathname: "/results",
-      search: `?${createSearchParams(
-        Object.fromEntries(Object.entries(student).filter(([key, value]) => value != ""))
-      )}`,
-    });
-  };
-  const [regions, setRegions] = useState([]);
-  const [techAndTools, setTechAndTools] = useState([]);
 
-  const techAndToolsOptions = [];
-  techAndTools.forEach((techAndTool) => {
-    const item = {
-      value: `${techAndTool.id}`,
-      label: `${techAndTool.name}`,
-    };
-    techAndToolsOptions.push(item);
-  });
+  
   const [selectedTechAndToolsOptions, setSelectedTechAndToolsOptions] = useState();
   function handleSelect(data) {
     setSelectedTechAndToolsOptions(data);
   }
-
-  useEffect(() => {
-    fetch("/server")
-      .then((response) => response.json())
-      .then((response) => setRegions(response.regions));
-    fetch("/server")
-      .then((response) => response.json())
-      .then((response) => setTechAndTools(response.techAndTools));
-  }, []);
+  const [regions, setRegions] = useState([]);
+  const [techAndTools, setTechAndTools] = useState([]);
 
   const [student, setStudent] = useState({
     studentRegion: "",
@@ -65,6 +35,40 @@ const Business = () => {
 
   const handleChange = (event) => {
     setStudent({ ...student, [event.target.name]: event.target.value });
+  };
+
+  useEffect(() => {
+    fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setRegions(response.regions));
+    fetch("/server")
+      .then((response) => response.json())
+      .then((response) => setTechAndTools(response.techAndTools));
+  }, []);
+
+  const techAndToolsOptions = [];
+  techAndTools.forEach((techAndTool) => {
+    const item = {
+      value: `${techAndTool.id}`,
+      label: `${techAndTool.name}`,
+    };
+    techAndToolsOptions.push(item);
+  });
+
+  const goToResults = () => {
+    let technologies = "";
+    console.log(selectedTechAndToolsOptions);
+    if (selectedTechAndToolsOptions !== "" && selectedTechAndToolsOptions !== null && selectedTechAndToolsOptions !== undefined)
+      selectedTechAndToolsOptions.forEach((item) => {
+        technologies += `${item.value};`;
+      });
+    student.studentTechAndTools = technologies;
+    navigate({
+      pathname: "/results",
+      search: `?${createSearchParams(
+        Object.fromEntries(Object.entries(student).filter(([key, value]) => value != ""))
+      )}`,
+    });
   };
 
   const searchCandidates = (e) => {
