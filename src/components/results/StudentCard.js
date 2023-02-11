@@ -11,7 +11,7 @@ import { workplaces } from "./../../helpers/workplaceOptionsList";
 
 const StudentCard = ({ student, techAndToolsData }) => {
   const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
-  const englishLevel = englishLevels[student.english_level_id - 1].split(" - ")[1];
+  const englishLevel = englishLevels[student.english_level_id - 1].name.split(" - ")[1];
   const techAndToolsIds = student.technologies_and_tools
     .split(";")
     .filter(function (el) {
@@ -22,7 +22,7 @@ const StudentCard = ({ student, techAndToolsData }) => {
   let techAndToolsNames = techAndToolsData.filter((item) => techAndToolsIds.includes(item.id));
 
   const studentWorkExpId = student.work_experience_id - 1;
-  let workExp = workExps[studentWorkExpId];
+  let workExp = workExps[studentWorkExpId].name;
   switch (studentWorkExpId) {
     case 0:
       workExp = "без досвіду";
@@ -54,9 +54,9 @@ const StudentCard = ({ student, techAndToolsData }) => {
           <h3 className="name">
             {student.surname} {student.name}
           </h3>
-          <h4 className="position">{positions[student.position_id - 1]}</h4>
+          <h4 className="position">{positions[student.position_id - 1].name}</h4>
           <p className="info">
-            &#128187; {workAreas[student.work_area_id - 1]} / &#128188; {workExp} /{" "}
+            &#128187; {workAreas[student.work_area_id - 1].name} / &#128188; {workExp} /{" "}
             <ReactCountryFlag countryCode="GB" svg /> {englishLevel}
           </p>
         </div>

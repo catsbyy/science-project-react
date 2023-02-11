@@ -1,3 +1,9 @@
-const workAreas = ["Front End", "Back End", "Full Stack", "Web Design", "Quality Assurance"];
+const workAreas = [
+  { id: 1, name: "Front End" },
+  { id: 2, name: "Back End" },
+  { id: 3, name: "Full Stack" },
+  { id: 4, name: "Web Design" },
+  { id: 5, name: "Quality Assurance" },
+];
 
 export { workAreas };

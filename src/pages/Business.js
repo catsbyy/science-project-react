@@ -93,10 +93,10 @@ const Business = () => {
                     <option disabled value={0}>
                       Оберіть необхідну посаду
                     </option>
-                    {positions.map((position, index) => {
+                    {positions.map((position) => {
                       return (
-                        <option key={index} value={index + 1}>
-                          {position}
+                        <option key={position.id} value={(position.id)}>
+                          {position.name}
                         </option>
                       );
                     })}
@@ -109,10 +109,10 @@ const Business = () => {
                     <option disabled value={0}>
                       Оберіть область роботи
                     </option>
-                    {workAreas.map((workArea, index) => {
+                    {workAreas.map((workArea) => {
                       return (
-                        <option key={index + 1} value={index}>
-                          {workArea}
+                        <option key={workArea.id} value={workArea.id}>
+                          {workArea.name}
                         </option>
                       );
                     })}
@@ -125,10 +125,10 @@ const Business = () => {
                     <option disabled value={0}>
                       Оберіть досвід роботи
                     </option>
-                    {workExps.map((workExp, index) => {
+                    {workExps.map((workExp ) => {
                       return (
-                        <option key={index} value={index + 1}>
-                          {workExp}
+                        <option key={workExp.id} value={workExp.id}>
+                          {workExp.name}
                         </option>
                       );
                     })}
@@ -156,10 +156,10 @@ const Business = () => {
                     <option disabled value={0}>
                       Оберіть рівень англійської
                     </option>
-                    {englishLevels.map((level, index) => {
+                    {englishLevels.map((level) => {
                       return (
-                        <option key={index} value={index + 1}>
-                          {level}
+                        <option key={level.id} value={level.id}>
+                          {level.name}
                         </option>
                       );
                     })}
@@ -172,10 +172,10 @@ const Business = () => {
                     <option disabled value={0}>
                       Оберіть рівень освіти
                     </option>
-                    {education.map((eduOption, index) => {
+                    {education.map((eduOption) => {
                       return (
-                        <option key={index} value={index + 1}>
-                          {eduOption}
+                        <option key={eduOption.id} value={eduOption.id}>
+                          {eduOption.name}
                         </option>
                       );
                     })}
@@ -213,8 +213,8 @@ const Business = () => {
                     <option value={0}>Оберіть місце роботи</option>
                     {workplaces.map((workplace, index) => {
                       return (
-                        <option key={index} value={index + 1}>
-                          {workplace}
+                        <option key={workplace.name} value={workplace.id}>
+                          {workplace.name}
                         </option>
                       );
                     })}
@@ -225,10 +225,10 @@ const Business = () => {
                   <label>Заробітна плата</label>
                   <select name="studentSalary" onChange={handleChange} defaultValue={0}>
                     <option value={0}>Оберіть заробітну плату ($)</option>
-                    {salaries.map((salary, index) => {
+                    {salaries.map((salary) => {
                       return (
-                        <option key={index} value={index + 1}>
-                          {salary}
+                        <option key={salary.id} value={salary.id}>
+                          {salary.name}
                         </option>
                       );
                     })}

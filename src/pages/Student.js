@@ -33,25 +33,25 @@ const Student = () => {
   let techAndToolsNames = [];
   techAndTools.filter(item => techAndToolsIds.includes(item.id));
 
-  let workExp = "";
-  switch (student.work_experience) {
-    case workExps[0]:
+  const studentWorkExpId = student.work_experience_id - 1;
+  let workExp = workExps[studentWorkExpId].name;
+  switch (studentWorkExpId) {
+    case 0:
       workExp = "без досвіду";
       break;
-    case workExps[2]:
-      workExp = workExps[2] + " рік";
+    case 1:
+    case 3:
+      workExp += " року";
       break;
-    case workExps[1]:
-    case workExps[3]:
-      workExp = workExps[3] + " року";
+    case 2:
+      workExp += " рік";
       break;
-    case workExps[4]:
-    case workExps[5]:
-    case workExps[6]:
-      workExp = workExps[6] + " роки";
+    case 4:
+    case 5:
+      workExp += " роки";
       break;
-    case workExps[7]:
-      workExp = workExps[7] + " років";
+    case 6:
+      workExp += " років";
       break;
     default:
       break;
