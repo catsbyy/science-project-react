@@ -4,7 +4,7 @@ const Footer = () => {
     return ( 
         <footer>
             <p>
-            © 2022 Science Project. All rights reserved.
+            © Science Project, 2023
             </p>
             
         </footer>
