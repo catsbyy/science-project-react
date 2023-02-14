@@ -1,8 +1,7 @@
 const workplaces = [
-  { id: 1, name: "Неважливо" },
-  { id: 2, name: "Віддалено" },
-  { id: 3, name: "Офіс" },
-  { id: 4, name: "Віддалено/офіс" },
+  { id: 1, name: "Віддалено" },
+  { id: 2, name: "Офіс" },
+  { id: 3, name: "Віддалено/офіс" },
 ];
 
 export { workplaces };
