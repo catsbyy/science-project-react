@@ -232,6 +232,14 @@ form .fields .input-field{
     margin: 8px 0;
 }
 
+#studentTechAndTools input{
+  height: 28px;
+}
+
+.custom-selection{
+  margin: 8px 0;
+}
+
 .input-field input:is(:focus), .input-field select:is(:focus), .custom-selection:is(focus) {
     box-shadow: 0 3px 6px rgba(0,0,0,0.13);
 }

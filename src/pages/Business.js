@@ -66,7 +66,7 @@ const Business = () => {
     navigate({
       pathname: "/results",
       search: `?${createSearchParams(
-        Object.fromEntries(Object.entries(student).filter(([key, value]) => value != ""))
+        Object.fromEntries(Object.entries(student).filter(([key, value]) => value !== ""))
       )}`,
     });
   };
@@ -135,7 +135,7 @@ const Business = () => {
                   </select>
                 </div>
 
-                <div className="input-field">
+                <div className="input-field" id="studentTechAndTools">
                   <label>Технології та інструменти</label>
                   <Select
                     className="custom-selection"
