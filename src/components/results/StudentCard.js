@@ -30,6 +30,7 @@ const StudentCard = ({ student, techAndToolsData }) => {
   let techAndToolsNames = techAndToolsData.filter((item) => techAndToolsIds.includes(item.id));
 
   const studentWorkExpId = student.work_experience_id - 1;
+  
   let workExp = workExps[studentWorkExpId].name;
   switch (studentWorkExpId) {
     case 0:
@@ -52,6 +53,8 @@ const StudentCard = ({ student, techAndToolsData }) => {
     default:
       break;
   }
+
+
   return (
     <div className="result-card">
       <NavLink to={`/student/${student.id}`} className="result-card-link">
