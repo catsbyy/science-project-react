@@ -305,27 +305,8 @@ form .buttons button,
 }
 
 /* Student Profile */
-:root {
-  /* fonts */
-  --font-montserrat: Montserrat;
-
-  /* font sizes */
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-
-  /* Colors */
-  --color-white: #fff;
-  --color-black: #000;
-  --color-dodgerblue: rgba(100, 140, 244, 0.75);
-
-  /* border radiuses */
-  --br-3xs: 10px;
-  --br-7xs: 6px;
-}
-
 .b,
-.c
- {
+.c {
   display: flex;
   align-items: center;
 }
@@ -342,7 +323,7 @@ form .buttons button,
 .b {
   top: 0;
   left: calc(50% - 208.5px);
-  color: var(--color-black);
+  color: #000;
   text-align: left;
   width: 267px;
   height: 29px;
@@ -354,7 +335,7 @@ form .buttons button,
   width: 417px;
   height: 132px;
   text-align: center;
-  color: var(--color-white);
+  color: #fff;
 }
 .skills-section-profile {
   list-style: none;
@@ -718,10 +699,17 @@ form .buttons button,
   left: 0;
   width: 330px;
   height: 552px;
-  font-size: var(--font-size-base);
-  color: var(--color-white);
+  font-size: 16px;
+  color: #fff;
 }
+
 .profile-body {
+  background-color: #edeff0;
+}
+.profile-container {
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   position: relative;
   align-items: center;
@@ -732,12 +720,8 @@ form .buttons button,
   /* 611px */
   overflow: hidden;
   text-align: left;
-  font-size: var(--font-size-lg);
-  color: var(--color-black);
-  font-family: var(--font-montserrat);
-}
-.profile-container {
-
+  font-size: 18px;
+  color: #000;
 }
 
 /* old  */
