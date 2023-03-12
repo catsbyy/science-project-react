@@ -92,6 +92,109 @@ const Student = () => {
       break;
   }
   return (
+    /* TEST */
+    <main className="profile-body">
+      <div className="profile-container">
+        <div class="profile-section-wrapper">
+          <div class="profile-contacts">
+            <div className="profile-contacts-bg"></div>
+
+            <img className="profile-picture" alt="" src={student?.profile_picture} />
+            <b className="profile-name">{student?.name + " " + student?.surname}</b>
+            <div>
+              <img className="cake-icon" alt="" src={cakeIcon} />
+              <b className="profile-contacts-details">{birthday}</b>
+            </div>
+            <div>
+              <img className="location-icon" alt="" src={locationIcon} />
+              <b>
+                <p className="profile-contacts-details">{student?.city},</p>
+                <p className="profile-contacts-details">Київська область</p>
+              </b>
+            </div>
+
+            <div>
+              <img className="mail-icon" alt="" src={mailIcon} />
+              <b className="profile-contacts-details">{student?.email}</b>
+            </div>
+
+            <div>
+              <img className="phone-icon" alt="" src={phoneIcon} />
+              <b className="profile-contacts-details">{student?.mobile_number}</b>
+            </div>
+
+            <div>
+              {student?.linkedin && (
+                <a href={student?.linkedin}>
+                  <img className="linkedin" alt="" src={linkedinIcon} />
+                </a>
+              )}
+              {student?.github && (
+                <a href={student?.github}>
+                  <img className="github" alt="" src={githubIcon} />
+                </a>
+              )}
+            </div>
+          </div>
+
+          <div class="profile-first-section">
+            <div className="profile-summary">
+              <b className="profile-title">Про себе:</b>
+              <div className="profile-details">{student?.summary}</div>
+            </div>
+            <div className="profile-education">
+              <b className="profile-title">Освіта: </b>
+              <div className="div6">{educationLevel}</div>
+            </div>
+            <div className="profile-unversity">
+              <b className="profile-title">Заклад освіти:</b>
+              <div className="profile-details">{student?.university}</div>
+            </div>
+            <div className="profile-specialty">
+              <b className="profile-title">Спеціальність: </b>
+              <div className="profile-details">{student?.specialty}</div>
+            </div>
+            <div className="profile-english">
+              <b className="profile-title">Рівень англійської: </b>
+              <div className="profile-details">{englishLevel}</div>
+            </div>
+          </div>
+
+          <div class="profile-second-section">
+            <div className="profile-position">
+              <b className="profile-title">Посада: </b>
+              <div className="profile-details">{position}</div>
+            </div>
+            <div className="profile-exp">
+              <b className="profile-title">Досвід роботи: </b>
+              <div className="profile-details">{workExp}</div>
+            </div>
+            <div className="profile-workarea">
+              <b className="profile-title">Область роботи: </b>
+              <div className="profile-details">{workArea}</div>
+            </div>
+            <div className="profile-workplace">
+              <b className="profile-title">Бажане місце роботи: </b>
+              <div className="profile-details">{workplace}</div>
+            </div>
+            <div className="profile-salary">
+              <b className="profile-title">Бажана заробітня плата: </b>
+              <div className="profile-details">$ {salary}</div>
+            </div>
+            <div className="profile-skills">
+              <b className="profile-title">Технології та інструменти:</b>
+              <ul className="skills-section-profile">
+                {techAndToolsNames?.map((techAndTool) => {
+                  return <li key={techAndTool.id}>{techAndTool.name}</li>;
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    /* 
     <main className="profile-body">
       <div class="profile-container">
         <div className="profile-contacts">
@@ -188,7 +291,7 @@ const Student = () => {
           </div>
         </div>
       </div>
-    </main>
+    </main>*/
   );
 };
 
