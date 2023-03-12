@@ -112,8 +112,16 @@ const Student = () => {
           <img className="call-phone-icon" alt="" src={phoneIcon} />
           <img className="mail-icon" alt="" src={mailIcon} />
           <div>
-            <img className="linkedin-negative" alt="" src={linkedinIcon} />
-            <img className="github-negative" alt="" src={githubIcon} />
+            {student?.linkedin && (
+              <a href={student?.linkedin}>
+                <img className="linkedin-negative" alt="" src={linkedinIcon} />
+              </a>
+            )}
+            {student?.github && (
+              <a href={student?.github}>
+                <img className="github-negative" alt="" src={githubIcon} />
+              </a>
+            )}
           </div>
         </div>
 
