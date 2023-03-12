@@ -94,23 +94,35 @@ const Student = () => {
   return (
     <main className="profile-body">
       <div class="profile-container">
-        <div className="rectangle-parent">
-          <div className="frame-child"></div>
-          <b className="b13">
-            <span className="txt">
-              <p className="p">{student?.city},</p>
-              <p className="p">Київська область</p>
-            </span>
-          </b>
-          <b className="b14">{student?.name + " " + student?.surname}</b>
-          <img className="frame-item" alt="" src={student?.profile_picture} />
-          <img className="cake-2-icon" alt="" src={cakeIcon} />
-          <b className="b11">{student?.mobile_number}</b>
-          <b className="leodicapriogmailcom">{student?.email}</b>
-          <b className="b12">{birthday}</b>
-          <img className="pin-location-icon" alt="" src={locationIcon} />
-          <img className="call-phone-icon" alt="" src={phoneIcon} />
-          <img className="mail-icon" alt="" src={mailIcon} />
+        <div className="profile-contacts">
+          <div className="profile-contacts-bg"></div>
+
+          <img className="profile-picture" alt="" src={student?.profile_picture} />
+          <b className="profile-name">{student?.name + " " + student?.surname}</b>
+          <div>
+            <img className="cake-2-icon" alt="" src={cakeIcon} />
+            <b className="b12">{birthday}</b>
+          </div>
+          <div>
+            <img className="pin-location-icon" alt="" src={locationIcon} />
+            <b className="b13">
+              <span className="txt">
+                <p className="p">{student?.city},</p>
+                <p className="p">Київська область</p>
+              </span>
+            </b>
+          </div>
+
+          <div>
+            <img className="mail-icon" alt="" src={mailIcon} />
+            <b className="leodicapriogmailcom">{student?.email}</b>
+          </div>
+
+          <div>
+            <img className="call-phone-icon" alt="" src={phoneIcon} />
+            <b className="b11">{student?.mobile_number}</b>
+          </div>
+
           <div>
             {student?.linkedin && (
               <a href={student?.linkedin}>
@@ -124,55 +136,56 @@ const Student = () => {
             )}
           </div>
         </div>
+        <div className="profile-details">
+          <div className="profile-summary">
+            <b className="b10">Про себе:</b>
+            <div className="lorem-ipsum-dolor">{student?.summary}</div>
+          </div>
+          <div className="profile-education">
+            <b className="b9">Освіта: </b>
+            <div className="div6">{educationLevel}</div>
+          </div>
+          <div className="profile-unversity">
+            <b className="b7">Заклад освіти:</b>
+            <div className="div5">{student?.university}</div>
+          </div>
+          <div className="profile-specialty">
+            <b className="b7">Спеціальність: </b>
+            <div className="proficient-c2">{student?.specialty}</div>
+          </div>
+          <div className="profile-english">
+            <b className="b6">Рівень англійської: </b>
+            <div className="proficient-c2">{englishLevel}</div>
+          </div>
 
-        <div className="skill-9-parent">
-          <b className="b">Технології та інструменти:</b>
-          <ul className="skills-section-profile">
-            {techAndToolsNames?.map((techAndTool) => {
-              return <li key={techAndTool.id}>{techAndTool.name}</li>;
-            })}
-          </ul>
-        </div>
-        <div className="parent6">
-          <b className="b10">Про себе:</b>
-          <div className="lorem-ipsum-dolor">{student?.summary}</div>
-        </div>
-        <div className="parent5">
-          <b className="b9">Освіта: </b>
-          <div className="div6">{educationLevel}</div>
-        </div>
-        <div className="parent4">
-          <b className="b7">Заклад освіти:</b>
-          <div className="div5">{student?.university}</div>
-        </div>
-        <div className="parent3">
-          <b className="b7">Спеціальність: </b>
-          <div className="proficient-c2">{student?.specialty}</div>
-        </div>
-        <div className="parent2">
-          <b className="b6">Рівень англійської: </b>
-          <div className="proficient-c2">{englishLevel}</div>
-        </div>
-
-        <div className="parent1">
-          <b className="b5">Посада: </b>
-          <div className="div3">{position}</div>
-        </div>
-        <div className="frame-div">
-          <b className="b4">Досвід роботи: </b>
-          <div className="div2">{workExp}</div>
-        </div>
-        <div className="parent7">
-          <b className="b3">Область роботи: </b>
-          <div className="full-stack">{workArea}</div>
-        </div>
-        <div className="group">
-          <b className="b2">Бажане місце роботи: </b>
-          <div className="div">{workplace}</div>
-        </div>
-        <div className="parent">
-          <b className="b1">Бажана заробітня плата: </b>
-          <div className="div">$ {salary}</div>
+          <div className="profile-position">
+            <b className="b5">Посада: </b>
+            <div className="div3">{position}</div>
+          </div>
+          <div className="profile-exp">
+            <b className="b4">Досвід роботи: </b>
+            <div className="div2">{workExp}</div>
+          </div>
+          <div className="profile-workarea">
+            <b className="b3">Область роботи: </b>
+            <div className="full-stack">{workArea}</div>
+          </div>
+          <div className="profile-workplace">
+            <b className="b2">Бажане місце роботи: </b>
+            <div className="div">{workplace}</div>
+          </div>
+          <div className="profile-salary">
+            <b className="b1">Бажана заробітня плата: </b>
+            <div className="div">$ {salary}</div>
+          </div>
+          <div className="profile-skills">
+            <b className="b">Технології та інструменти:</b>
+            <ul className="skills-section-profile">
+              {techAndToolsNames?.map((techAndTool) => {
+                return <li key={techAndTool.id}>{techAndTool.name}</li>;
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </main>

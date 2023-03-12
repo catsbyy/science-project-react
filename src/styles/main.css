@@ -305,6 +305,12 @@ form .buttons button,
 }
 
 /* Student Profile */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
 .b,
 .c {
   display: flex;
@@ -328,7 +334,7 @@ form .buttons button,
   width: 267px;
   height: 29px;
 }
-.skill-9-parent {
+.profile-skills {
   position: absolute;
   top: 289px;
   left: 766px;
@@ -372,7 +378,7 @@ form .buttons button,
   font-weight: 300;
   width: 143px;
 }
-.parent {
+.profile-salary {
   position: absolute;
   top: 257px;
   left: 766px;
@@ -380,8 +386,8 @@ form .buttons button,
   justify-content: flex-start;
 }
 .b2,
-.group,
-.parent {
+.profile-workplace,
+.profile-salary {
   height: 29px;
   display: flex;
   align-items: center;
@@ -391,7 +397,7 @@ form .buttons button,
   width: 226px;
   flex-shrink: 0;
 }
-.group {
+.profile-workplace {
   position: absolute;
   top: 225px;
   left: 766px;
@@ -404,7 +410,7 @@ form .buttons button,
   flex-shrink: 0;
 }
 .b3,
-.parent7,
+.profile-workarea,
 .full-stack {
   height: 29px;
   display: flex;
@@ -416,7 +422,7 @@ form .buttons button,
   width: 101px;
   flex-shrink: 0;
 }
-.parent7 {
+.profile-workarea {
   position: absolute;
   top: 193px;
   left: 766px;
@@ -430,7 +436,7 @@ form .buttons button,
 }
 .b4,
 .div2,
-.frame-div {
+.profile-exp {
   height: 29px;
   display: flex;
   align-items: center;
@@ -441,7 +447,7 @@ form .buttons button,
   width: 112px;
   flex-shrink: 0;
 }
-.frame-div {
+.profile-exp {
   position: absolute;
   top: 161px;
   left: 766px;
@@ -467,13 +473,13 @@ form .buttons button,
 }
 .b6,
 .div3,
-.parent1,
+.profile-position,
 .proficient-c2 {
   display: flex;
   align-items: center;
   height: 29px;
 }
-.parent1 {
+.profile-position {
   position: absolute;
   top: 129px;
   left: 766px;
@@ -491,7 +497,7 @@ form .buttons button,
   width: 367px;
   height: 30px;
 }
-.parent2 {
+.profile-english {
   position: absolute;
   top: 478px;
   left: 350px;
@@ -511,7 +517,7 @@ form .buttons button,
   height: 29px;
   flex-shrink: 0;
 }
-.parent3 {
+.profile-specialty {
   position: absolute;
   top: 416px;
   left: 351px;
@@ -520,8 +526,8 @@ form .buttons button,
   justify-content: flex-start;
 }
 .div5,
-.parent3,
-.parent4 {
+.profile-specialty,
+.profile-unversity {
   width: 367px;
   display: flex;
 }
@@ -532,7 +538,7 @@ form .buttons button,
   height: 46px;
   flex-shrink: 0;
 }
-.parent4 {
+.profile-unversity {
   position: absolute;
   top: 338px;
   left: 351px;
@@ -558,12 +564,12 @@ form .buttons button,
 .b10,
 .div6,
 .lorem-ipsum-dolor,
-.parent5 {
+.profile-education {
   display: flex;
   align-items: center;
   height: 29px;
 }
-.parent5 {
+.profile-education {
   position: absolute;
   top: 306px;
   left: 350px;
@@ -582,7 +588,7 @@ form .buttons button,
   width: 366px;
   height: 148px;
 }
-.parent6 {
+.profile-summary {
   position: absolute;
   top: 129px;
   left: 350px;
@@ -592,7 +598,7 @@ form .buttons button,
   align-items: flex-start;
   justify-content: flex-start;
 }
-.frame-child {
+.profile-contacts-bg {
   position: absolute;
   top: 70px;
   left: 0;
@@ -660,7 +666,7 @@ form .buttons button,
   width: 100%;
 }
 .b13,
-.b14 {
+.profile-name {
   position: absolute;
   top: 287px;
   left: calc(50% - 81px);
@@ -669,14 +675,13 @@ form .buttons button,
   width: 170px;
   height: 28px;
 }
-.b14 {
+.profile-name {
   top: 166px;
-  left: calc(50% - 111px);
   font-size: 20px;
-  width: 222px;
+  width: 320px;
   height: 29px;
 }
-.frame-item {
+.profile-picture {
   position: absolute;
   border-radius: 50%;
   top: 0;
@@ -693,7 +698,7 @@ form .buttons button,
   height: 24px;
   overflow: hidden;
 }
-.rectangle-parent {
+.profile-contacts {
   position: absolute;
   top: 59px;
   left: 0;
