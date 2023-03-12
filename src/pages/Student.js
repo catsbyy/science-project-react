@@ -163,23 +163,23 @@ const Student = () => {
           <div class="profile-second-section">
             <div className="profile-position">
               <b className="profile-title">Посада: </b>
-              <div className="profile-details">{position}</div>
+              <b className="profile-details">{position}</b>
             </div>
             <div className="profile-exp">
               <b className="profile-title">Досвід роботи: </b>
-              <div className="profile-details">{workExp}</div>
+              <b className="profile-details">{workExp}</b>
             </div>
             <div className="profile-workarea">
               <b className="profile-title">Область роботи: </b>
-              <div className="profile-details">{workArea}</div>
+              <b className="profile-details">{workArea}</b>
             </div>
             <div className="profile-workplace">
               <b className="profile-title">Бажане місце роботи: </b>
-              <div className="profile-details">{workplace}</div>
+              <b className="profile-details">{workplace}</b>
             </div>
             <div className="profile-salary">
               <b className="profile-title">Бажана заробітня плата: </b>
-              <div className="profile-details">$ {salary}</div>
+              <b className="profile-details">$ {salary}</b>
             </div>
             <div className="profile-skills">
               <b className="profile-title">Технології та інструменти:</b>
