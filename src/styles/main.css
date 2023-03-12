@@ -366,7 +366,6 @@ form .buttons button,
   height: 29px;
 }
 
-
 .profile-picture {
   border-radius: 50%;
   width: 150px;
@@ -391,6 +390,19 @@ form .buttons button,
 .profile-details {
   font-weight: 300;
   font-size: 18px;
+}
+
+.phone-icon,
+.mail-icon,
+.location-icon,
+.cake-icon {
+  width: 24px;
+  height: 24px;
+}
+.github,
+.linkedin {
+  width: 32px;
+  height: 32px;
 }
 
 /*
