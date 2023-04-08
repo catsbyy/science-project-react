@@ -99,41 +99,50 @@ const Student = () => {
           <div class="profile-contacts">
             <div className="profile-contacts-bg"></div>
 
-            <img className="profile-picture" alt="" src={student?.profile_picture} />
-            <b className="profile-name">{student?.name + " " + student?.surname}</b>
-            <div>
-              <img className="cake-icon" alt="" src={cakeIcon} />
-              <b className="profile-contacts-details">{birthday}</b>
+            <div className="profile-picture-wrapper">
+              <img className="profile-picture" alt="" src={student?.profile_picture} />
             </div>
-            <div>
-              <img className="location-icon" alt="" src={locationIcon} />
-              <b>
-                <p className="profile-contacts-details">{student?.city},</p>
-                <p className="profile-contacts-details">Київська область</p>
-              </b>
-            </div>
+            
+            <div className="profile-name">{student?.name + " " + student?.surname}</div>
 
-            <div>
-              <img className="mail-icon" alt="" src={mailIcon} />
-              <b className="profile-contacts-details">{student?.email}</b>
-            </div>
+            <div className="profile-contacts-details-wrapper">
+              
+              <div className="profile-contacts-details-div">
+                <img className="cake-icon" alt="" src={cakeIcon} />
+                <p className="profile-contacts-details">{birthday}</p>
+              </div>
 
-            <div>
-              <img className="phone-icon" alt="" src={phoneIcon} />
-              <b className="profile-contacts-details">{student?.mobile_number}</b>
-            </div>
+              <div className="profile-contacts-details-div">
+                <img className="location-icon" alt="" src={locationIcon} />
+                <div>
+                  <p className="profile-contacts-details">{student?.city},</p>
 
-            <div>
-              {student?.linkedin && (
-                <a href={student?.linkedin}>
-                  <img className="linkedin" alt="" src={linkedinIcon} />
-                </a>
-              )}
-              {student?.github && (
-                <a href={student?.github}>
-                  <img className="github" alt="" src={githubIcon} />
-                </a>
-              )}
+                  <p className="profile-contacts-details">Київська область</p>
+                </div>
+              </div>
+
+              <div className="profile-contacts-details-div">
+                <img className="mail-icon" alt="" src={mailIcon} />
+                <p className="profile-contacts-details">{student?.email}</p>
+              </div>
+
+              <div className="profile-contacts-details-div">
+                <img className="phone-icon" alt="" src={phoneIcon} />
+                <p className="profile-contacts-details">{student?.mobile_number}</p>
+              </div>
+
+              <div className="profile-contacts-details-buttons">
+                {student?.linkedin && (
+                  <a href={student?.linkedin}>
+                    <img className="linkedin" alt="" src={linkedinIcon} />
+                  </a>
+                )}
+                {student?.github && (
+                  <a href={student?.github}>
+                    <img className="github" alt="" src={githubIcon} />
+                  </a>
+                )}
+              </div>
             </div>
           </div>
 
@@ -144,7 +153,7 @@ const Student = () => {
             </div>
             <div className="profile-education">
               <b className="profile-title">Освіта: </b>
-              <div className="div6">{educationLevel}</div>
+              <b className="profile-details">{educationLevel}</b>
             </div>
             <div className="profile-unversity">
               <b className="profile-title">Заклад освіти:</b>
