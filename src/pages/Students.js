@@ -18,7 +18,9 @@ const Students = () => {
   useEffect(() => {
     fetch("/server")
       .then((response) => response.json())
-      .then((response) => setRegions(response.regions))
+      .then((response) => setRegions(response.regions));
+    fetch("/server")
+      .then((response) => response.json())
       .then((response) => setTechAndTools(response.techAndTools));
   }, []);
 

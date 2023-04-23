@@ -1,0 +1,74 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+.support {
+    padding-left: 30px;
+    position: relative;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.2s ease-in;
+    padding-bottom: 5px;
+  }
+  
+  .support img {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    filter: invert(0%);
+    transition: filter 0.2s ease-in;
+    margin-right: 4px;
+  }
+  
+  .support:hover  {
+    color: #4070f4;
+  }
+  
+  .support:hover img {
+    filter: invert(34%) sepia(67%) saturate(3138%) hue-rotate(216deg) brightness(103%) contrast(91%);
+  }

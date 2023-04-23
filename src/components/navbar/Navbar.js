@@ -1,5 +1,6 @@
 import support from "./../../img/icons/support.svg";
 import "./style.css";
+import Modal from "../modal/Modal.js";
 
 import { NavLink } from "react-router-dom";
 
@@ -29,11 +30,13 @@ const Navbar = () => {
 
           <a
             href="https://www.google.com.ua/"
-            target="_blank"
             className="support"
           >
             <img src={support} alt="support" />
           </a>
+
+          <Modal />
+
           <button className="nav-button">
             <span className="nav-button-icon"></span>
           </button>
@@ -54,8 +57,6 @@ const Navbar = () => {
             </div>
             <a
               href="https://www.google.com.ua/"
-              target="_blank"
-              rel="noreferrer"
               className="support"
             >
               <img src={support} alt="support" />
