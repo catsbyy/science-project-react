@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import support from "./../../img/icons/support.svg";
 import youtube from "./../../img/icons/youtube.png";
+import telegram from "./../../img/icons/telegram.png";
 import twitter from "./../../img/icons/twitter.png";
 import facebook from "./../../img/icons/facebook.png";
 import instagram from "./../../img/icons/instagram.png";
@@ -52,38 +53,43 @@ const Navbar = () => {
               <div onClick={toggleModal}>
                 <div className="overlay">
                   <div className="modal-content">
-                    <div class="popup_title">Контакти</div>
-                    <div class="popup_phone">+38 099 000 00 09</div>
-                    <div class="popup_email">INFO@SNB.COM</div>
+                    <div className="modal-title">Контакти</div>
+                    <div className="modal-phone">+38 099 000 00 09</div>
+                    <div className="modal-email">INFO@SNB.COM</div>
 
-                    <ul className="social_media">
+                    <ul className="social-media">
                       <li>
                         <a href="https://www.instagram.com/earth/?hl=ru">
-                          <img src={instagram} alt="instagram" className="popup_media"/>
+                          <img src={instagram} alt="instagram" className="modal-media"/>
                         </a>
                       </li>
                       <li>
                         <a href="https://twitter.com/earth?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
-                          <img src={twitter} alt="twitter" className="popup_media" />
+                          <img src={twitter} alt="twitter" className="modal-media" />
                         </a>
                       </li>
                       <li>
                         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-                          <img src={youtube} alt="youtube" className="popup_media" />
+                          <img src={youtube} alt="youtube" className="modal-media" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+                          <img src={telegram} alt="telegram" className="modal-media" />
                         </a>
                       </li>
                       <li>
                         <a href="https://www.facebook.com/earth/">
-                          <img src={facebook} alt="facebook" className="popup_media" />
+                          <img src={facebook} alt="facebook" className="modal-media" />
                         </a>
                       </li>
                     </ul>
 
-                    <div className="popup_close" onClick={toggleModal}>
-                      <img src={close} alt="close" className="popup_media" />
+                    <div className="modal-close" onClick={toggleModal}>
+                      <img src={close} alt="close" className="modal-media" />
                     </div>
                   </div>
-                </div>
+                  </div>
               </div>
             </div>
           )}
