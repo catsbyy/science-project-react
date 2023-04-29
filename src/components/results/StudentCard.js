@@ -22,7 +22,7 @@ const StudentCard = ({ student, techAndToolsData }) => {
     techAndToolsIds = student.technologies_and_tools
       .split(",")
       .filter(function (el) {
-        return el != "";
+        return el !== "";
       })
       .map(Number);
   }
@@ -30,7 +30,7 @@ const StudentCard = ({ student, techAndToolsData }) => {
   let techAndToolsNames = techAndToolsData.filter((item) => techAndToolsIds.includes(item.id));
 
   const studentWorkExpId = student.work_experience_id - 1;
-  
+
   let workExp = workExps[studentWorkExpId].name;
   switch (studentWorkExpId) {
     case 0:
@@ -54,7 +54,6 @@ const StudentCard = ({ student, techAndToolsData }) => {
       break;
   }
 
-
   return (
     <div className="result-card">
       <NavLink to={`/student/${student.id}`} className="result-card-link">
@@ -63,7 +62,7 @@ const StudentCard = ({ student, techAndToolsData }) => {
         </div>
         <div className="result-content">
           <h3 className="name">
-            {student.surname} {student.name}
+            {student.name} {student.surname}
           </h3>
           <h4 className="position">{positions[student.position_id - 1].name}</h4>
           <p className="info">

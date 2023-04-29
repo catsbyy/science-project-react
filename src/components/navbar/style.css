@@ -244,7 +244,7 @@ body.active-modal {
   transition: transform 0.2s;
 }
 .modal-close:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
   transition: transform 0.2s;
   cursor: pointer;
 }
@@ -277,6 +277,6 @@ body.active-modal {
 
 .social-media img:hover {
   transition: all 0.2s;
-  transform: scale(1.05);
+  transform: scale(1.10);
   filter: invert(34%) sepia(67%) saturate(3138%) hue-rotate(216deg) brightness(103%) contrast(91%);
 }

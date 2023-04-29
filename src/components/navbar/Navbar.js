@@ -60,7 +60,7 @@ const Navbar = () => {
                     <ul className="social-media">
                       <li>
                         <a href="https://www.instagram.com/earth/?hl=ru">
-                          <img src={instagram} alt="instagram" className="modal-media"/>
+                          <img src={instagram} alt="instagram" className="modal-media" />
                         </a>
                       </li>
                       <li>
@@ -89,7 +89,7 @@ const Navbar = () => {
                       <img src={close} alt="close" className="modal-media" />
                     </div>
                   </div>
-                  </div>
+                </div>
               </div>
             </div>
           )}
