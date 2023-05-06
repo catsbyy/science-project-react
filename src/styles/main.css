@@ -106,7 +106,7 @@ a {
   text-decoration: none;
 }
 
-.submit-button {
+.to-home-button {
   background-color: #648cf4;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -118,7 +118,7 @@ a {
   transition: all 0.1s ease-in;
 }
 
-.submit-button:hover {
+.to-home-button:hover {
   background-color: #386df5;
   color: white;
   font-size: 22px;
@@ -276,6 +276,7 @@ select {
 }
 
 .container form button,
+.to-home-btn,
 .backBtn {
   display: flex;
   align-items: center;
@@ -295,23 +296,31 @@ select {
 .container form .btnText {
   font-size: 14px;
   font-weight: 400;
-}
-form button:hover {
+}  
+
+form button:hover, .to-home-btn:hover {
   background-color: #265df2;
 }
+
+.to-home-btn {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 form button i,
+.to-home-btn,
 form .backBtn i {
   margin: 0 6px;
 }
 form .backBtn i {
   transform: rotate(180deg);
 }
-form .buttons {
+form .buttons, .to-home-btn {
   display: flex;
   align-items: center;
 }
 form .buttons button,
-.backBtn {
+.backBtn, .to-home-btn {
   margin-right: 14px;
 }
 
