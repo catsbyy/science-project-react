@@ -84,13 +84,21 @@ html::-webkit-scrollbar-track {
   background-color: #4070f4;
 }
 
-.main-section {
+.main-section, .successful-registration-section {
   max-width: 1200px;
   padding: 10px 30px;
   align-content: center;
   min-height: 560px;
   margin: 0 auto;
   border-radius: 10px;
+}
+
+.successful-registration-section {
+  vertical-align: middle;
+}
+
+.successful-section-wrapper {
+  text-align: center;
 }
 
 .main-section-wrapper {
@@ -108,8 +116,7 @@ a {
 
 .to-home-button {
   background-color: #648cf4;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto;
   padding: 5px 10px;
   color: white;
   font-size: 22px;
@@ -302,25 +309,19 @@ form button:hover, .to-home-btn:hover {
   background-color: #265df2;
 }
 
-.to-home-btn {
-  font-size: 14px;
-  font-weight: 400;
-}
-
 form button i,
-.to-home-btn,
 form .backBtn i {
   margin: 0 6px;
 }
 form .backBtn i {
   transform: rotate(180deg);
 }
-form .buttons, .to-home-btn {
+form .buttons {
   display: flex;
   align-items: center;
 }
 form .buttons button,
-.backBtn, .to-home-btn {
+.backBtn {
   margin-right: 14px;
 }
 
@@ -501,6 +502,25 @@ form .buttons button,
 .linkedin {
   width: 32px;
   height: 32px;
+}
+
+/* SUCCESSFUL REGISTRATION */
+
+.success-text {
+  font-size: 24;
+}
+
+.success-img {
+  width: 28px;
+  height: 28px;
+  margin: 0 4px;
+}
+
+.to-home-btn {
+  display: inline-flex;
+  max-width: 240px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 /*
