@@ -93,14 +93,6 @@ html::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
-.successful-registration-section {
-  vertical-align: middle;
-}
-
-.successful-section-wrapper {
-  text-align: center;
-}
-
 .main-section-wrapper {
   display: flex;
   max-width: 1200px;
@@ -160,7 +152,9 @@ a {
 }
 
 .container {
+  min-height: 590px;
   position: relative;
+  height: 100%;
   max-width: 1200px;
   width: 100%;
   border-radius: 6px;
@@ -193,21 +187,24 @@ a {
   overflow: hidden;
 }
 .container form .form {
-  position: absolute;
+  /* position: absolute; */
   background-color: #fff;
   transition: 0.3s ease;
 }
 .container form .form.second {
+  display: none;
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
 }
 form.secActive .form.second {
+  display: block;
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
 }
 form.secActive .form.first {
+  display: none;
   opacity: 0;
   pointer-events: none;
   transform: translateX(-100%);
@@ -507,12 +504,13 @@ form .buttons button,
 /* SUCCESSFUL REGISTRATION */
 
 .success-text {
-  font-size: 24;
+  font-size: 22;
+  margin-top: -30px;
 }
 
 .success-img {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   margin: 0 4px;
 }
 
@@ -521,6 +519,25 @@ form .buttons button,
   max-width: 240px;
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: 115px;
+}
+
+.successful-section {
+  text-align: center;
+  height: 100%;
+  /*
+  margin-top: 180px;
+  margin-bottom: 135px;
+  */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.success-title {
+  margin-top: 140px;
+  vertical-align: top;
 }
 
 /*
