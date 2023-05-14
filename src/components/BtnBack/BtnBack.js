@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./../../styles/main.css";
+import arrowLeft from "./../../img/icons/arrow-right-solid.svg";
 
 const BtnBack = () => {
   const [previousPage, setPreviousPage] = useState("second");
@@ -15,7 +16,7 @@ const BtnBack = () => {
 
   return (
     <div className="backBtn" onClick={goToPreviousPage}>
-      <i className="uil uil-navigator"></i>
+      <img className="arrow-left" alt="" src={arrowLeft} />
       <span className="btnText">Назад</span>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./../../styles/main.css";
+import arrowRight from "./../../img/icons/arrow-right-solid.svg";
 
 const BtnNext = () => {
   const [nextPage, setNextPage] = useState("first");
@@ -26,7 +27,7 @@ const BtnNext = () => {
   return (
     <button className="nextBtn" onClick={goToNextPage}>
       <span className="btnText">Далі</span>
-      <i className="uil uil-navigator"></i>
+      <img className="arrow-right" alt="" src={arrowRight} />
     </button>
   );
 };

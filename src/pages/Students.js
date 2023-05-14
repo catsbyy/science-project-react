@@ -10,6 +10,7 @@ import { workAreas } from "./../helpers/workAreaOptionsList";
 import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
 import Select from "react-select";
+import arrowRight from "./../img/icons/arrow-right-solid.svg";
 
 const Students = () => {
   const [regions, setRegions] = useState([]);
@@ -423,7 +424,7 @@ const Students = () => {
                     <option disabled selected>
                       Оберіть місце роботи
                     </option>
-                    {workplaces.map((workplace ) => {
+                    {workplaces.map((workplace) => {
                       return (
                         <option key={workplace.id} value={workplace.id}>
                           {workplace.name}
@@ -447,12 +448,12 @@ const Students = () => {
               <div className="buttons">
                 <BtnBack />
 
-                <NavLink to="/success">
-                  <button className="sumbit" onClick={addNewStudent}>
+                <button className="sumbit" onClick={addNewStudent}>
+                  <NavLink id="sumbit-link" to="/success">
                     <span className="btnText">Підтвердити</span>
-                    <i className="uil uil-navigator"></i>
-                  </button>
-                </NavLink>
+                  </NavLink>
+                  <img className="arrow-right" alt="" src={arrowRight} />
+                </button>
               </div>
             </div>
           </div>

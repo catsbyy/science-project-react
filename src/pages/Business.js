@@ -8,11 +8,11 @@ import { salaries } from "./../helpers/salaryOptionsList";
 import { workplaces } from "./../helpers/workplaceOptionsList";
 import { NavLink, useSearchParams, useNavigate, createSearchParams } from "react-router-dom";
 import Select from "react-select";
+import search from "./../img/icons/search.svg";
 
 const Business = () => {
   const navigate = useNavigate();
 
-  
   const [selectedTechAndToolsOptions, setSelectedTechAndToolsOptions] = useState();
   function handleSelect(data) {
     setSelectedTechAndToolsOptions(data);
@@ -56,9 +56,13 @@ const Business = () => {
   });
 
   const goToResults = () => {
-    let technologies = ""; 
-    
-    if (selectedTechAndToolsOptions !== "" && selectedTechAndToolsOptions !== null && selectedTechAndToolsOptions !== undefined)
+    let technologies = "";
+
+    if (
+      selectedTechAndToolsOptions !== "" &&
+      selectedTechAndToolsOptions !== null &&
+      selectedTechAndToolsOptions !== undefined
+    )
       selectedTechAndToolsOptions.forEach((item) => {
         technologies += `${item.value};`;
       });
@@ -95,7 +99,7 @@ const Business = () => {
                     </option>
                     {positions.map((position) => {
                       return (
-                        <option key={position.id} value={(position.id)}>
+                        <option key={position.id} value={position.id}>
                           {position.name}
                         </option>
                       );
@@ -125,7 +129,7 @@ const Business = () => {
                     <option disabled value={0}>
                       Оберіть досвід роботи
                     </option>
-                    {workExps.map((workExp ) => {
+                    {workExps.map((workExp) => {
                       return (
                         <option key={workExp.id} value={workExp.id}>
                           {workExp.name}
@@ -238,7 +242,7 @@ const Business = () => {
 
               <button className="sumbit" onClick={goToResults} type="submit">
                 <span className="btnText">Знайти</span>
-                <i className="uil uil-search"></i>
+                <img className="search" alt="" src={search} />
               </button>
             </div>
           </div>

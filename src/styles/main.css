@@ -23,13 +23,13 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: rgba(63,112,244,0.3);
+  background-color: rgba(63, 112, 244, 0.3);
   border: 5px;
   border-radius: 4px;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(63,112,244,0.75);
+  background-color: rgba(63, 112, 244, 0.75);
 }
 
 html::-webkit-scrollbar-track {
@@ -84,7 +84,8 @@ html::-webkit-scrollbar-track {
   background-color: #4070f4;
 }
 
-.main-section, .successful-registration-section {
+.main-section,
+.successful-registration-section {
   max-width: 1200px;
   padding: 10px 30px;
   align-content: center;
@@ -279,6 +280,11 @@ select {
   color: #333;
 }
 
+#submit-link {
+  width: 200px;
+  color: white;
+}
+
 .container form button,
 .to-home-btn,
 .backBtn {
@@ -300,19 +306,15 @@ select {
 .container form .btnText {
   font-size: 14px;
   font-weight: 400;
-}  
+  color: white;
+}
 
-form button:hover, .to-home-btn:hover {
+form button:hover,
+.to-home-btn:hover,
+.backBtn:hover {
   background-color: #265df2;
 }
 
-form button i,
-form .backBtn i {
-  margin: 0 6px;
-}
-form .backBtn i {
-  transform: rotate(180deg);
-}
 form .buttons {
   display: flex;
   align-items: center;
@@ -1105,6 +1107,29 @@ form .buttons button,
   padding: 4px 8px;
   display: inline-block;
   font-size: 15px;
+}
+
+.arrow-left,
+.arrow-right {
+  filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(331deg) brightness(101%) contrast(104%);
+  width: 18px;
+  height: 18px;
+}
+
+.search {
+  filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(331deg) brightness(101%) contrast(104%);
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+}
+
+.arrow-right {
+  margin-left: 4px;
+}
+
+.arrow-left {
+  transform: rotate(180deg);
+  margin-right: 4px;
 }
 
 /* old end */
