@@ -35,6 +35,7 @@ const Student = () => {
   }, []);
 
   const regions = response.regions;
+  console.log("we are here for regions: " + regions);
   const techAndTools = response.techAndTools;
 
   console.log(student);
@@ -46,6 +47,7 @@ const Student = () => {
   const workplace = workplaces[student?.workplace_id - 1]?.name;
   const salary = salaries[student?.salary_id - 1]?.name;
   const birthday = moment(new Date(student?.date_of_birth)).format("LL");
+  const region = regions[student?.region_id-1]?.region_name + " область";
 
   let techAndToolsIds = "";
   if (
@@ -117,7 +119,7 @@ const Student = () => {
                 <div>
                   <p className="profile-contacts-details">{student?.city},</p>
 
-                  <p className="profile-contacts-details">Київська область</p>
+                  <p className="profile-contacts-details">{region}</p>
                 </div>
               </div>
 
