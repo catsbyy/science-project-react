@@ -24,30 +24,31 @@ const Student = () => {
   const [response, setResponse] = useState([]);
 
   useEffect(() => {
-    console.log(id);
     fetch(`/get-student-details/${id}`)
       .then((response) => response.json())
       .then((response) => setStudent(response.student[0]));
-    console.log(student);
     fetch("/server")
       .then((response) => response.json())
       .then((response) => setResponse(response));
   }, []);
 
-  const regions = response.regions;
+  console.log(response);
+  let regions = response?.regions || [];
   console.log("we are here for regions: " + regions);
-  const techAndTools = response.techAndTools;
+  let techAndTools = response?.techAndTools;
 
-  console.log(student);
   let englishLevel = englishLevels[student?.english_level_id - 1]?.name;
-  const educationLevel = education[student?.education_level_id - 1]?.name;
+  let educationLevel = education[student?.education_level_id - 1]?.name;
 
-  const position = positions[student?.position_id - 1]?.name;
-  const workArea = workAreas[student?.work_area_id - 1]?.name;
-  const workplace = workplaces[student?.workplace_id - 1]?.name;
-  const salary = salaries[student?.salary_id - 1]?.name;
-  const birthday = moment(new Date(student?.date_of_birth)).format("LL");
-  const region = regions[student?.region_id-1]?.region_name + " область";
+  let position = positions[student?.position_id - 1]?.name;
+  let workArea = workAreas[student?.work_area_id - 1]?.name;
+  let workplace = workplaces[student?.workplace_id - 1]?.name;
+  let salary = salaries[student?.salary_id - 1]?.name;
+  //const birthday = moment(new Date(student?.date_of_birth)).format("LL");
+  let dateOptions = { year: "numeric", month: "long", day: "numeric" };
+  let birthday = new Date(student?.date_of_birth).toLocaleDateString("ukr-UA", dateOptions).slice(0, -3);
+  let region = regions[student?.region_id-1]?.region_name + " область";
+  //const region = " область";
 
   let techAndToolsIds = "";
   if (
@@ -63,11 +64,7 @@ const Student = () => {
       .map(Number);
   }
 
-  console.log(techAndToolsIds);
-
   let techAndToolsNames = techAndTools?.filter((item) => techAndToolsIds?.includes(item.id));
-
-  console.log("names: " + techAndToolsNames);
 
   const studentWorkExpId = student?.work_experience_id - 1;
 
@@ -97,18 +94,17 @@ const Student = () => {
     /* TEST */
     <main className="profile-body">
       <div className="profile-container">
-        <div class="profile-section-wrapper">
-          <div class="profile-contacts">
+        <div className="profile-section-wrapper">
+          <div className="profile-contacts">
             <div className="profile-contacts-bg"></div>
 
             <div className="profile-picture-wrapper">
               <img className="profile-picture" alt="" src={student?.profile_picture} />
             </div>
-            
+
             <div className="profile-name">{student?.name + " " + student?.surname}</div>
 
             <div className="profile-contacts-details-wrapper">
-              
               <div className="profile-contacts-details-div">
                 <img className="cake-icon" alt="" src={cakeIcon} />
                 <p className="profile-contacts-details">{birthday}</p>
@@ -148,7 +144,7 @@ const Student = () => {
             </div>
           </div>
 
-          <div class="profile-first-section">
+          <div className="profile-first-section">
             <div className="profile-summary">
               <b className="profile-title">Про себе:</b>
               <div className="profile-details">{student?.summary}</div>
@@ -171,7 +167,7 @@ const Student = () => {
             </div>
           </div>
 
-          <div class="profile-second-section">
+          <div className="profile-second-section">
             <div className="profile-position">
               <b className="profile-title">Посада: </b>
               <b className="profile-details">{position}</b>
@@ -204,105 +200,6 @@ const Student = () => {
         </div>
       </div>
     </main>
-
-    /* 
-    <main className="profile-body">
-      <div class="profile-container">
-        <div className="profile-contacts">
-          <div className="profile-contacts-bg"></div>
-
-          <img className="profile-picture" alt="" src={student?.profile_picture} />
-          <b className="profile-name">{student?.name + " " + student?.surname}</b>
-          <div>
-            <img className="cake-2-icon" alt="" src={cakeIcon} />
-            <b className="b12">{birthday}</b>
-          </div>
-          <div>
-            <img className="pin-location-icon" alt="" src={locationIcon} />
-            <b className="b13">
-              <span className="txt">
-                <p className="p">{student?.city},</p>
-                <p className="p">Київська область</p>
-              </span>
-            </b>
-          </div>
-
-          <div>
-            <img className="mail-icon" alt="" src={mailIcon} />
-            <b className="leodicapriogmailcom">{student?.email}</b>
-          </div>
-
-          <div>
-            <img className="call-phone-icon" alt="" src={phoneIcon} />
-            <b className="b11">{student?.mobile_number}</b>
-          </div>
-
-          <div>
-            {student?.linkedin && (
-              <a href={student?.linkedin}>
-                <img className="linkedin-negative" alt="" src={linkedinIcon} />
-              </a>
-            )}
-            {student?.github && (
-              <a href={student?.github}>
-                <img className="github-negative" alt="" src={githubIcon} />
-              </a>
-            )}
-          </div>
-        </div>
-        <div className="profile-details">
-          <div className="profile-summary">
-            <b className="b10">Про себе:</b>
-            <div className="lorem-ipsum-dolor">{student?.summary}</div>
-          </div>
-          <div className="profile-education">
-            <b className="b9">Освіта: </b>
-            <div className="div6">{educationLevel}</div>
-          </div>
-          <div className="profile-unversity">
-            <b className="b7">Заклад освіти:</b>
-            <div className="div5">{student?.university}</div>
-          </div>
-          <div className="profile-specialty">
-            <b className="b7">Спеціальність: </b>
-            <div className="proficient-c2">{student?.specialty}</div>
-          </div>
-          <div className="profile-english">
-            <b className="b6">Рівень англійської: </b>
-            <div className="proficient-c2">{englishLevel}</div>
-          </div>
-
-          <div className="profile-position">
-            <b className="b5">Посада: </b>
-            <div className="div3">{position}</div>
-          </div>
-          <div className="profile-exp">
-            <b className="b4">Досвід роботи: </b>
-            <div className="div2">{workExp}</div>
-          </div>
-          <div className="profile-workarea">
-            <b className="b3">Область роботи: </b>
-            <div className="full-stack">{workArea}</div>
-          </div>
-          <div className="profile-workplace">
-            <b className="b2">Бажане місце роботи: </b>
-            <div className="div">{workplace}</div>
-          </div>
-          <div className="profile-salary">
-            <b className="b1">Бажана заробітня плата: </b>
-            <div className="div">$ {salary}</div>
-          </div>
-          <div className="profile-skills">
-            <b className="b">Технології та інструменти:</b>
-            <ul className="skills-section-profile">
-              {techAndToolsNames?.map((techAndTool) => {
-                return <li key={techAndTool.id}>{techAndTool.name}</li>;
-              })}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </main>*/
   );
 };
 

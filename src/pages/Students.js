@@ -24,7 +24,7 @@ const Students = () => {
       .then((response) => response.json())
       .then((response) => setTechAndTools(response.techAndTools));
   }, []);
-
+  
   const techAndToolsOptions = [];
   techAndTools.forEach((techAndTool) => {
     const item = {
