@@ -10,7 +10,8 @@ import { salaries } from "./../../helpers/salaryOptionsList";
 import { workplaces } from "./../../helpers/workplaceOptionsList";
 
 const StudentCard = ({ student, techAndToolsData }) => {
-  const mobileNumber = "https://www.google.com.ua/search?q=" + student.mobile_number;
+  const mobileNumber = "tel:" + student.mobile_number;
+  const email = "mailto:" + student.email;
   const englishLevel = englishLevels[student.english_level_id - 1].name.split(" - ")[1];
 
   let techAndToolsIds = "";
@@ -84,7 +85,7 @@ const StudentCard = ({ student, techAndToolsData }) => {
           <a href={mobileNumber} className="fa fa-phone" aria-hidden="true"></a>
         </li>
         <li>
-          <a href={student.email} className="fa fa-envelope" aria-hidden="true"></a>
+          <a href={email} className="fa fa-envelope" aria-hidden="true"></a>
         </li>
         <li>
           <a href={student.github} className="fa fa-github" aria-hidden="true"></a>
