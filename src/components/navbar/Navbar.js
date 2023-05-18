@@ -64,7 +64,7 @@ const Navbar = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="https://twitter.com/earth?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                        <a href="https://www.google.com.ua/">
                           <img src={twitter} alt="twitter" className="modal-media" />
                         </a>
                       </li>
@@ -93,29 +93,6 @@ const Navbar = () => {
               </div>
             </div>
           )}
-
-          <button className="nav-button">
-            <span className="nav-button-icon"></span>
-          </button>
-
-          <div className="mobile-nav">
-            <div className="nav">
-              <ul>
-                <li>
-                  <NavLink to="/">Головна</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/students">Студенту</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business">Роботодавцю</NavLink>
-                </li>
-              </ul>
-            </div>
-            <a href="https://www.google.com.ua/" className="support">
-              <img src={support} alt="support" />
-            </a>
-          </div>
         </div>
       </div>
     </nav>
