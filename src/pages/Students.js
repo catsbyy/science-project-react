@@ -15,8 +15,6 @@ import arrowRight from "./../img/icons/arrow-right-solid.svg";
 
 const Students = () => {
   const [response, setResponse] = useState([]);
-  //const [regions, setRegions] = useState([]);
-  //const [techAndTools, setTechAndTools] = useState([]);
 
   useEffect(() => {
     fetch("/server")
@@ -24,7 +22,6 @@ const Students = () => {
       .then((response) => setResponse(response));
   }, []);
   let regions = response?.regions || [];
-  console.log("we are here for regions: " + regions);
   let techAndTools = response?.techAndTools || [];
   
   const techAndToolsOptions = [];

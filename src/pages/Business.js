@@ -43,7 +43,6 @@ const Business = () => {
   }, []);
 
   let regions = response?.regions || [];
-  console.log("we are here for regions: " + regions);
   let techAndTools = response?.techAndTools || [];
 
   const techAndToolsOptions = [];
