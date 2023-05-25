@@ -17,8 +17,7 @@ const Business = () => {
   function handleSelect(data) {
     setSelectedTechAndToolsOptions(data);
   }
-  const [regions, setRegions] = useState([]);
-  const [techAndTools, setTechAndTools] = useState([]);
+  const [response, setResponse] = useState([]);
 
   const [student, setStudent] = useState({
     studentRegion: "",
@@ -40,11 +39,12 @@ const Business = () => {
   useEffect(() => {
     fetch("/server")
       .then((response) => response.json())
-      .then((response) => setRegions(response.regions));
-    fetch("/server")
-      .then((response) => response.json())
-      .then((response) => setTechAndTools(response.techAndTools));
+      .then((response) => setResponse(response));
   }, []);
+
+  let regions = response?.regions || [];
+  console.log("we are here for regions: " + regions);
+  let techAndTools = response?.techAndTools || [];
 
   const techAndToolsOptions = [];
   techAndTools.forEach((techAndTool) => {

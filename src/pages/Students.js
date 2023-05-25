@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import BtnNext from "../components/BtnNext/BtnNext";
 import BtnBack from "../components/BtnBack/BtnBack";
 import { education } from "./../helpers/educationOptionsList";
@@ -13,17 +14,18 @@ import Select from "react-select";
 import arrowRight from "./../img/icons/arrow-right-solid.svg";
 
 const Students = () => {
-  const [regions, setRegions] = useState([]);
-  const [techAndTools, setTechAndTools] = useState([]);
+  const [response, setResponse] = useState([]);
+  //const [regions, setRegions] = useState([]);
+  //const [techAndTools, setTechAndTools] = useState([]);
 
   useEffect(() => {
     fetch("/server")
       .then((response) => response.json())
-      .then((response) => setRegions(response.regions));
-    fetch("/server")
-      .then((response) => response.json())
-      .then((response) => setTechAndTools(response.techAndTools));
+      .then((response) => setResponse(response));
   }, []);
+  let regions = response?.regions || [];
+  console.log("we are here for regions: " + regions);
+  let techAndTools = response?.techAndTools || [];
   
   const techAndToolsOptions = [];
   techAndTools.forEach((techAndTool) => {
