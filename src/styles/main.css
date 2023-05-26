@@ -233,7 +233,14 @@ form .fields .input-field {
 .input-field label {
   font-size: 12px;
   font-weight: 500;
+}
+
+.input-label {
   color: #2e2e2e;
+}
+
+.input-label-invalid {
+  color: #db1d34;
 }
 
 .custom-selection {
@@ -255,6 +262,10 @@ select {
   padding: 0 15px;
   height: 42px;
   margin: 8px 0;
+}
+
+.input-field-invalid, input.input-field-invalid, select.input-field-invalid {
+  border: 1px solid #db1d34;
 }
 
 #studentTechAndTools input {

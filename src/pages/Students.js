@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import BtnNext from "../components/BtnNext/BtnNext";
@@ -23,7 +23,7 @@ const Students = () => {
   }, []);
   let regions = response?.regions || [];
   let techAndTools = response?.techAndTools || [];
-  
+
   const techAndToolsOptions = [];
   techAndTools.forEach((techAndTool) => {
     const item = {
@@ -31,6 +31,14 @@ const Students = () => {
       label: `${techAndTool.name}`,
     };
     techAndToolsOptions.push(item);
+  });
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    mode: "onBlur",
   });
 
   const [selectedTechAndToolsOptions, setSelectedTechAndToolsOptions] = useState();
@@ -69,99 +77,162 @@ const Students = () => {
     setStudent({ ...student, [event.target.name]: event.target.value });
   };
 
-  const addNewStudent = () => {
+  const navigate = useNavigate();
+
+  const addNewStudent = (data) => {
+    console.log(data);
+    const studentTEST = {
+      studentSurname: data.studentSurname,
+      studentName: data.studentName,
+      studentPatronymic: data.studentPatronymic,
+      studentDateOfBirth: data.studentDateOfBirth,
+      studentMobNumber: data.studentMobNumber,
+      studentEmail: data.studentEmail,
+      studentRegion: data.studentRegion,
+      studentCity: data.studentCity,
+      studentStreet: data.studentStreet,
+      studentHouseNum: data.studentHouseNum,
+      studentLinkedin: data.studentLinkedin,
+      studentGithub: data.studentGithub,
+      studentEducation: data.studentEducation,
+      studentUniversity: data.studentUniversity,
+      studentSpecialty: data.studentSpecialty,
+      studentTechAndTools: data.studentTechAndTools,
+      studentEnglish: data.studentEnglish,
+      studentSummary: data.studentSummary,
+      studentPosition: data.studentPosition,
+      studentWorkExp: data.studentWorkExp,
+      studentWorkArea: data.studentWorkArea,
+      studentSalary: data.studentSalary,
+      studentWorkplace: data.studentWorkplace,
+      studentProfilePic: data.studentProfilePic,
+    };
     let technologies = "";
     selectedTechAndToolsOptions.forEach((item) => {
       technologies += `${item.value};`;
     });
-    student.studentTechAndTools = technologies;
+    studentTEST.studentTechAndTools = technologies;
     fetch("/students", {
       method: "POST",
-      body: JSON.stringify(student),
+      body: JSON.stringify(studentTEST),
       headers: {
         "Content-Type": "application/json",
       },
     }).then((e) => {
       console.log(e);
     });
-    console.log(JSON.stringify(student));
-    console.log("created student", student);
+    console.log(JSON.stringify(studentTEST));
+    console.log("created student", studentTEST);
+    navigate("/success");
   };
+
+  const inputRegex = new RegExp(/^[^\s]+(?:$|.*[^\s]+$)/);
+  const phoneRegex = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/);
+  const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+  const linkRegex = new RegExp(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/);
 
   return (
     <main className="students-body">
       <div className="container">
         <header>Анкета кандидата</header>
 
-        <form action="#" name="registrationForm" method="post" onSubmit={addNewStudent}>
+        <form action="#" name="registrationForm" method="post" onSubmit={handleSubmit(addNewStudent)}>
           <div className="form first">
             <div className="details personal">
               <span className="title">Персональні дані</span>
 
               <div className="fields">
                 <div className="input-field">
-                  <label>Прізвище *</label>
+                  <label className={errors?.studentSurname ? "input-label-invalid" : "input-label"}>Прізвище *</label>
                   <input
+                    {...register("studentSurname", {
+                      required: true,
+                      pattern: {
+                        value: inputRegex,
+                      },
+                    })}
+                    className={errors?.studentSurname ? "input-field-invalid" : ""}
                     name="studentSurname"
                     type="text"
                     placeholder="Введіть ваше прізвище"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>Ім'я *</label>
+                  <label className={errors?.studentName ? "input-label-invalid" : "input-label"}>Ім'я *</label>
                   <input
-                    name="studentName"
+                    {...register("studentName", {
+                      required: true,
+                      pattern: {
+                        value: inputRegex,
+                      },
+                    })}
                     type="text"
                     placeholder="Введіть ваше ім'я"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>По-батькові *</label>
+                  <label className={errors?.studentPatronymic ? "input-label-invalid" : "input-label"}>
+                    По-батькові *
+                  </label>
                   <input
-                    name="studentPatronymic"
+                    {...register("studentPatronymic", {
+                      required: true,
+                      pattern: {
+                        value: inputRegex,
+                      },
+                    })}
                     type="text"
                     placeholder="Введіть ваше по-батькові"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>Дата народження *</label>
+                  <label className={errors?.studentDateOfBirth ? "input-label-invalid" : "input-label"}>
+                    Дата народження *
+                  </label>
                   <input
-                    name="studentDateOfBirth"
+                    {...register("studentDateOfBirth", {
+                      required: true,
+                      validate: (dateValue) => {
+                        return new Date(dateValue) < new Date()
+                      } 
+                    })}
                     type="date"
                     placeholder="Enter birth date"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>Мобільний номер *</label>
+                  <label className={errors?.studentMobNumber ? "input-label-invalid" : "input-label"}>
+                    Мобільний номер *
+                  </label>
                   <input
-                    name="studentMobNumber"
+                    {...register("studentMobNumber", {
+                      required: true,
+                      pattern: {
+                        value: phoneRegex,
+                      },
+                    })}
                     type="number"
                     placeholder="Введіть мобільний номер"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>Електронна пошта *</label>
+                  <label className={errors?.studentEmail ? "input-label-invalid" : "input-label"}>
+                    Електронна пошта *
+                  </label>
                   <input
-                    name="studentEmail"
+                    {...register("studentEmail", {
+                      required: true,
+                      pattern: {
+                        value: emailRegex,
+                      },
+                    })}
                     type="email"
                     placeholder="Введіть електронну пошту"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -172,10 +243,15 @@ const Students = () => {
 
               <div className="fields">
                 <div className="input-field">
-                  <label>Область *</label>
+                  <label className={errors?.studentRegion ? "input-label-invalid" : "input-label"}>Область *</label>
 
-                  <select required name="studentRegion" onChange={handleChange}>
-                    <option disabled selected>
+                  <select
+                    name="studentRegion"
+                    {...register("studentRegion", {
+                      required: true,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть вашу область
                     </option>
                     {regions.map((region) => {
@@ -189,55 +265,68 @@ const Students = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Місто *</label>
+                  <label className={errors?.studentCity ? "input-label-invalid" : "input-label"}>Місто *</label>
                   <input
-                    name="studentCity"
+                    {...register("studentCity", {
+                      required: true,
+                      pattern: {
+                        value: inputRegex,
+                      },
+                    })}
                     type="text"
                     placeholder="Введіть ваше місто"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>Вулиця *</label>
+                  <label className={errors?.studentStreet ? "input-label-invalid" : "input-label"}>Вулиця *</label>
                   <input
-                    name="studentStreet"
+                    {...register("studentStreet", {
+                      required: true,
+                    })}
                     type="text"
                     placeholder="Введіть вашу вулицю"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>Номер будинку *</label>
+                  <label className={errors?.studentHouseNum ? "input-label-invalid" : "input-label"}>
+                    Номер будинку *
+                  </label>
                   <input
-                    name="studentHouseNum"
+                    {...register("studentHouseNum", {
+                      required: true,
+                    })}
                     type="text"
                     placeholder="Введіть номер будинку"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>LinkedIn</label>
+                  <label className={errors?.studentLinkedin ? "input-label-invalid" : "input-label"}>LinkedIn</label>
                   <input
-                    name="studentLinkedin"
+                    {...register("studentLinkedin", {
+                      required: false,
+                      pattern: {
+                        value: linkRegex,
+                      },
+                    })}
                     type="url"
                     placeholder="Введіть посилання на LinkedIn"
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
-                  <label>GitHub</label>
+                  <label className={errors?.studentGithub ? "input-label-invalid" : "input-label"}>GitHub</label>
                   <input
-                    name="studentGithub"
+                    {...register("studentGithub", {
+                      required: false,
+                      pattern: {
+                        value: linkRegex
+                      },
+                    })}
                     type="url"
                     placeholder="Введіть посилання на GitHub"
-                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -252,9 +341,16 @@ const Students = () => {
 
               <div className="fields">
                 <div className="input-field">
-                  <label>Рівень освіти *</label>
-                  <select required name="studentEducation" onChange={handleChange}>
-                    <option disabled selected>
+                  <label className={errors?.studentEducation ? "input-label-invalid" : "input-label"}>
+                    Рівень освіти *
+                  </label>
+                  <select
+                    name="studentEducation"
+                    {...register("studentEducation", {
+                      required: true,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть рівень освіти
                     </option>
                     {education.map((eduOption) => {
@@ -268,29 +364,37 @@ const Students = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Заклад освіти *</label>
+                  <label className={errors?.studentUniversity ? "input-label-invalid" : "input-label"}>
+                    Заклад освіти *
+                  </label>
                   <input
-                    name="studentUniversity"
+                    {...register("studentUniversity", {
+                      required: true,
+                    })}
                     type="text"
                     placeholder="Введіть заклад освіти"
-                    required
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field">
                   <label>Спеціальність</label>
                   <input
-                    name="studentSpecialty"
+                    {...register("studentSpecialty", {
+                      required: false,
+                    })}
                     type="text"
                     placeholder="Введіть спеціальність"
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="input-field" id="input-field-technologies">
-                  <label>Технології та інструменти *</label>
+                  <label className={errors?.studentTechAndTools ? "input-label-invalid" : "input-label"}>
+                    Технології та інструменти *
+                  </label>
                   <Select
+                    /*{{...register("studentTechAndTools", {
+                      required: true,
+                    })}}*/
                     className="custom-selection"
                     options={techAndToolsOptions}
                     placeholder="Технології та інструменти"
@@ -302,30 +406,18 @@ const Students = () => {
                     isSearchable={true}
                     isMulti
                   />
-                  {/*<select
-                    id="studentTechAndTools"
-                    name="studentTechAndTools"
-                    placeholder="Технології та інструменти"
-                    required
-                    onChange={handleChange}
-                  >
-                    <option disabled selected>
-                      Технології та інструменти
-                    </option>
-                    {techAndTools.map((techAndTool) => {
-                      return (
-                        <option key={techAndTool.id} value={techAndTool.id}>
-                          {techAndTool.name}
-                        </option>
-                      );
-                    })}
-                  </select>*/}
                 </div>
 
                 <div className="input-field">
-                  <label>Рівень англійської *</label>
-                  <select required name="studentEnglish" onChange={handleChange}>
-                    <option disabled selected>
+                  <label className={errors?.studentEnglish ? "input-label-invalid" : "input-label"}>
+                    Рівень англійської *
+                  </label>
+                  <select
+                    {...register("studentEnglish", {
+                      required: true,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть рівень англійської
                     </option>
                     {englishLevels.map((level) => {
@@ -341,10 +433,11 @@ const Students = () => {
                 <div className="input-field">
                   <label>Коротка розповідь про себе</label>
                   <input
-                    name="studentSummary"
+                    {...register("studentSummary", {
+                      required: false,
+                    })}
                     type="text"
                     placeholder="Опис декількома реченнями"
-                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -354,9 +447,13 @@ const Students = () => {
 
               <div className="fields">
                 <div className="input-field">
-                  <label>Посада *</label>
-                  <select required name="studentPosition" onChange={handleChange}>
-                    <option disabled selected>
+                  <label className={errors?.studentPosition ? "input-label-invalid" : "input-label"}>Посада *</label>
+                  <select
+                    {...register("studentPosition", {
+                      required: true,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть посаду
                     </option>
                     {positions.map((position) => {
@@ -370,9 +467,15 @@ const Students = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Досвід роботи *</label>
-                  <select required name="studentWorkExp" onChange={handleChange}>
-                    <option disabled selected>
+                  <label className={errors?.studentWorkExp ? "input-label-invalid" : "input-label"}>
+                    Досвід роботи *
+                  </label>
+                  <select
+                    {...register("studentWorkExp", {
+                      required: true,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть досвід роботи
                     </option>
                     {workExps.map((workExp, index) => {
@@ -386,9 +489,15 @@ const Students = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Область роботи *</label>
-                  <select required name="studentWorkArea" onChange={handleChange}>
-                    <option disabled selected>
+                  <label className={errors?.studentWorkArea ? "input-label-invalid" : "input-label"}>
+                    Область роботи *
+                  </label>
+                  <select
+                    {...register("studentWorkArea", {
+                      required: true,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть область роботи
                     </option>
                     {workAreas.map((workArea) => {
@@ -403,8 +512,12 @@ const Students = () => {
 
                 <div className="input-field">
                   <label>Очікувана заробітна плата</label>
-                  <select name="studentSalary" onChange={handleChange}>
-                    <option disabled selected>
+                  <select
+                    {...register("studentSalary", {
+                      required: false,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть заробітну плату ($)
                     </option>
                     {salaries.map((salary) => {
@@ -419,8 +532,12 @@ const Students = () => {
 
                 <div className="input-field">
                   <label>Місце роботи</label>
-                  <select name="studentWorkplace" onChange={handleChange}>
-                    <option disabled selected>
+                  <select
+                    {...register("studentWorkplace", {
+                      required: false,
+                    })}
+                  >
+                    <option disabled selected value="">
                       Оберіть місце роботи
                     </option>
                     {workplaces.map((workplace) => {
@@ -434,12 +551,16 @@ const Students = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Профільна картинка</label>
+                  <label className={errors?.studentProfilePic ? "input-label-invalid" : "input-label"}>Профільна картинка</label>
                   <input
-                    name="studentProfilePic"
+                    {...register("studentProfilePic", {
+                      required: false,
+                      pattern: {
+                        value: linkRegex,
+                      },
+                    })}
                     type="url"
                     placeholder="Введіть посилання на картинку"
-                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -447,10 +568,11 @@ const Students = () => {
               <div className="buttons">
                 <BtnBack />
 
-                <button className="sumbit" onClick={addNewStudent}>
-                  <NavLink id="sumbit-link" to="/success">
-                    <span className="btnText">Підтвердити</span>
-                  </NavLink>
+                <button className="sumbit" type="submit">
+                  <span className="btnText">Підтвердити</span>
+                  {/*<NavLink id="sumbit-link" to="/success">
+                    
+                  </NavLink>*/}
                   <img className="arrow-right" alt="" src={arrowRight} />
                 </button>
               </div>
