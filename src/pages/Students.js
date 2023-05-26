@@ -129,7 +129,9 @@ const Students = () => {
   const inputRegex = new RegExp(/^[^\s]+(?:$|.*[^\s]+$)/);
   const phoneRegex = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/);
   const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-  const linkRegex = new RegExp(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/);
+  const linkRegex = new RegExp(
+    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
+  );
 
   return (
     <main className="students-body">
@@ -167,6 +169,7 @@ const Students = () => {
                         value: inputRegex,
                       },
                     })}
+                    className={errors?.studentName ? "input-field-invalid" : ""}
                     type="text"
                     placeholder="Введіть ваше ім'я"
                   />
@@ -183,6 +186,7 @@ const Students = () => {
                         value: inputRegex,
                       },
                     })}
+                    className={errors?.studentPatronymic ? "input-field-invalid" : ""}
                     type="text"
                     placeholder="Введіть ваше по-батькові"
                   />
@@ -196,9 +200,10 @@ const Students = () => {
                     {...register("studentDateOfBirth", {
                       required: true,
                       validate: (dateValue) => {
-                        return new Date(dateValue) < new Date()
-                      } 
+                        return new Date(dateValue) < new Date();
+                      },
                     })}
+                    className={errors?.studentDateOfBirth ? "input-field-invalid" : ""}
                     type="date"
                     placeholder="Enter birth date"
                   />
@@ -215,6 +220,7 @@ const Students = () => {
                         value: phoneRegex,
                       },
                     })}
+                    className={errors?.studentMobNumber ? "input-field-invalid" : ""}
                     type="number"
                     placeholder="Введіть мобільний номер"
                   />
@@ -231,6 +237,7 @@ const Students = () => {
                         value: emailRegex,
                       },
                     })}
+                    className={errors?.studentEmail ? "input-field-invalid" : ""}
                     type="email"
                     placeholder="Введіть електронну пошту"
                   />
@@ -250,6 +257,7 @@ const Students = () => {
                     {...register("studentRegion", {
                       required: true,
                     })}
+                    className={errors?.studentRegion ? "input-field-invalid" : ""}
                   >
                     <option disabled selected value="">
                       Оберіть вашу область
@@ -273,6 +281,7 @@ const Students = () => {
                         value: inputRegex,
                       },
                     })}
+                    className={errors?.studentCity ? "input-field-invalid" : ""}
                     type="text"
                     placeholder="Введіть ваше місто"
                   />
@@ -284,6 +293,7 @@ const Students = () => {
                     {...register("studentStreet", {
                       required: true,
                     })}
+                    className={errors?.studentStreet ? "input-field-invalid" : ""}
                     type="text"
                     placeholder="Введіть вашу вулицю"
                   />
@@ -297,6 +307,7 @@ const Students = () => {
                     {...register("studentHouseNum", {
                       required: true,
                     })}
+                    className={errors?.studentHouseNum ? "input-field-invalid" : ""}
                     type="text"
                     placeholder="Введіть номер будинку"
                   />
@@ -311,6 +322,7 @@ const Students = () => {
                         value: linkRegex,
                       },
                     })}
+                    className={errors?.studentLinkedin ? "input-field-invalid" : ""}
                     type="url"
                     placeholder="Введіть посилання на LinkedIn"
                   />
@@ -322,9 +334,10 @@ const Students = () => {
                     {...register("studentGithub", {
                       required: false,
                       pattern: {
-                        value: linkRegex
+                        value: linkRegex,
                       },
                     })}
+                    className={errors?.studentGithub ? "input-field-invalid" : ""}
                     type="url"
                     placeholder="Введіть посилання на GitHub"
                   />
@@ -345,10 +358,10 @@ const Students = () => {
                     Рівень освіти *
                   </label>
                   <select
-                    name="studentEducation"
                     {...register("studentEducation", {
                       required: true,
                     })}
+                    className={errors?.studentEducation ? "input-field-invalid" : ""}
                   >
                     <option disabled selected value="">
                       Оберіть рівень освіти
@@ -371,6 +384,7 @@ const Students = () => {
                     {...register("studentUniversity", {
                       required: true,
                     })}
+                    className={errors?.studentUniversity ? "input-field-invalid" : ""}
                     type="text"
                     placeholder="Введіть заклад освіти"
                   />
@@ -395,6 +409,7 @@ const Students = () => {
                     /*{{...register("studentTechAndTools", {
                       required: true,
                     })}}*/
+                    //className={errors?.studentUniversity ? "input-field-invalid" : ""}
                     className="custom-selection"
                     options={techAndToolsOptions}
                     placeholder="Технології та інструменти"
@@ -416,6 +431,7 @@ const Students = () => {
                     {...register("studentEnglish", {
                       required: true,
                     })}
+                    className={errors?.studentEnglish ? "input-field-invalid" : ""}
                   >
                     <option disabled selected value="">
                       Оберіть рівень англійської
@@ -452,6 +468,7 @@ const Students = () => {
                     {...register("studentPosition", {
                       required: true,
                     })}
+                    className={errors?.studentPosition ? "input-field-invalid" : ""}
                   >
                     <option disabled selected value="">
                       Оберіть посаду
@@ -474,6 +491,7 @@ const Students = () => {
                     {...register("studentWorkExp", {
                       required: true,
                     })}
+                    className={errors?.studentWorkExp ? "input-field-invalid" : ""}
                   >
                     <option disabled selected value="">
                       Оберіть досвід роботи
@@ -496,6 +514,7 @@ const Students = () => {
                     {...register("studentWorkArea", {
                       required: true,
                     })}
+                    className={errors?.studentWorkArea ? "input-field-invalid" : ""}
                   >
                     <option disabled selected value="">
                       Оберіть область роботи
@@ -551,7 +570,9 @@ const Students = () => {
                 </div>
 
                 <div className="input-field">
-                  <label className={errors?.studentProfilePic ? "input-label-invalid" : "input-label"}>Профільна картинка</label>
+                  <label className={errors?.studentProfilePic ? "input-label-invalid" : "input-label"}>
+                    Профільна картинка
+                  </label>
                   <input
                     {...register("studentProfilePic", {
                       required: false,
@@ -559,6 +580,7 @@ const Students = () => {
                         value: linkRegex,
                       },
                     })}
+                    className={errors?.studentProfilePic ? "input-field-invalid" : ""}
                     type="url"
                     placeholder="Введіть посилання на картинку"
                   />
