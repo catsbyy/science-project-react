@@ -2,7 +2,7 @@ const cards = [
     {
         type: 'student-type-card',
         link: '/students',
-        text: 'Я - студент'
+        text: 'Я - кандидат'
     }, 
     {
         type: 'employer-type-card',

@@ -193,10 +193,10 @@ a {
   transition: 0.3s ease;
 }
 .container form .form.second {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(100%);
+  /* display: none; */
+  /* opacity: 0; */
+  /* pointer-events: none; */
+  /* transform: translateX(100%); */
 }
 form.secActive .form.second {
   display: block;
@@ -205,10 +205,10 @@ form.secActive .form.second {
   transform: translateX(0);
 }
 form.secActive .form.first {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-100%);
+  /* display: none; */
+  /* opacity: 0; */
+  /* pointer-events: none; */
+  /* transform: translateX(-100%); */
 }
 .container form .title {
   display: block;
