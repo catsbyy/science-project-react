@@ -192,24 +192,14 @@ a {
   background-color: #fff;
   transition: 0.3s ease;
 }
-.container form .form.second {
-  /* display: none; */
-  /* opacity: 0; */
-  /* pointer-events: none; */
-  /* transform: translateX(100%); */
-}
+
 form.secActive .form.second {
   display: block;
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
 }
-form.secActive .form.first {
-  /* display: none; */
-  /* opacity: 0; */
-  /* pointer-events: none; */
-  /* transform: translateX(-100%); */
-}
+
 .container form .title {
   display: block;
   margin-bottom: 8px;

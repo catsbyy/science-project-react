@@ -55,7 +55,6 @@ const Students = () => {
   const navigate = useNavigate();
 
   const addNewStudent = (data) => {
-    console.log(data);
     const student = {
       studentSurname: data.studentSurname,
       studentName: data.studentName,
