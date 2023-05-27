@@ -558,9 +558,6 @@ const Students = () => {
 
                   <button className="sumbit" type="submit">
                     <span className="btnText">Підтвердити</span>
-                    {/*<NavLink id="sumbit-link" to="/success">
-                    
-                  </NavLink>*/}
                     <img className="arrow-right" alt="" src={arrowRight} />
                   </button>
                 </div>
