@@ -17,6 +17,7 @@ import { linkRegex } from "./../helpers/linkRegex";
 import { phoneRegex } from "./../helpers/phoneRegex";
 
 import arrowRight from "./../img/icons/arrow-right-solid.svg";
+import warning from "./../img/icons/warning.svg";
 
 const Students = () => {
   const [response, setResponse] = useState([]);
@@ -43,7 +44,7 @@ const Students = () => {
     formState: { errors },
     handleSubmit,
   } = useForm({
-    mode: "onBlur",
+    mode: "all",
   });
 
   const [selectedTechAndToolsOptions, setSelectedTechAndToolsOptions] = useState();
@@ -53,6 +54,8 @@ const Students = () => {
 
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
+
+  const [isFormInvalid, setIsFormInvalid] = useState(false);
 
   const addNewStudent = (data) => {
     const student = {
@@ -78,27 +81,110 @@ const Students = () => {
       studentWorkExp: data.studentWorkExp,
       studentWorkArea: data.studentWorkArea,
       studentSalary: data.studentSalary,
-      studentWorkplace: data.studentWorkplace,
-      studentProfilePic: data.studentProfilePic,
+      studentWorkplace: defaultValue(data.studentWorkplace, "3"),
+      studentProfilePic: defaultValue(
+        data.studentProfilePic,
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png"
+      ),
     };
+
     let technologies = "";
     selectedTechAndToolsOptions.forEach((item) => {
       technologies += `${item.value};`;
     });
     student.studentTechAndTools = technologies;
-    fetch("/students", {
-      method: "POST",
-      body: JSON.stringify(student),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((e) => {
-      console.log(e);
-    });
-    console.log(JSON.stringify(student));
-    console.log("created student", student);
-    navigate("/success");
+
+    if (!isDataInvalid(student)) {
+      fetch("/students", {
+        method: "POST",
+        body: JSON.stringify(student),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((e) => {
+        console.log(e);
+      });
+      console.log(JSON.stringify(student));
+      console.log("created student", student);
+      navigate("/success");
+    } else {
+      setIsFormInvalid(true);
+    }
   };
+
+  const isDataInvalid = (student) => {
+    const optionalFields = [
+      "studentLinkedin",
+      "studentGithub",
+      "studentSpecialty",
+      "studentSummary",
+      "studentSalary",
+      "studentWorkplace",
+      "studentProfilePic",
+    ];
+    
+    const textFields = [
+      "studentSurname",
+      "studentName",
+      "studentPatronymic",
+      "studentCity",
+      "studentStreet",
+      "studentHouseNum",
+      "studentEducation",
+      "studentUniversity",
+    ];
+
+    let isInvalid = false;
+
+    for (const [key, value] of Object.entries(student)) {
+      let isValueNotEmpty = value !== "" && value !== null && value !== undefined;
+
+      if (!optionalFields.includes(key)) {
+        if (isValueNotEmpty) {
+          /* check required fields for regex match  */
+          if (textFields.includes(key)) {
+            if (!inputRegex.test(value)) {
+              isInvalid = true;
+            }
+          } else if (key === "studentDateOfBirth") {
+            if (new Date(value) >= new Date()) {
+              isInvalid = true;
+            }
+          } else if (key === "studentMobNumber") {
+            if (!phoneRegex.test(value)) {
+              isInvalid = true;
+            }
+          } else if (key === "studentEmail") {
+            if (!emailRegex.test(value)) {
+              isInvalid = true;
+            }
+          }
+        } else {
+          /* set invalid, because required field is empty */
+          isInvalid = true;
+        }
+      } else {
+        /* if optional fields are not empty, check for regex match */
+        if (key === optionalFields[0] || key === optionalFields[1] || key === optionalFields[6]) {
+          if (!linkRegex.test(value)) {
+            isInvalid = true;
+          }
+        } else if (key === optionalFields[2] || key === optionalFields[3])
+          if (!inputRegex.test(value)) {
+            isInvalid = true;
+          }
+      }
+    }
+    return isInvalid;
+  };
+
+  function defaultValue(value, defaultValue) {
+    if (value === "" || value === null || value === undefined) {
+      return defaultValue;
+    } else {
+      return value;
+    }
+  }
 
   return (
     <main className="students-body">
@@ -221,13 +307,14 @@ const Students = () => {
                     <label className={errors?.studentRegion ? "input-label-invalid" : "input-label"}>Область *</label>
 
                     <select
+                      defaultValue={0}
                       name="studentRegion"
                       {...register("studentRegion", {
                         required: true,
                       })}
                       className={errors?.studentRegion ? "input-field-invalid" : ""}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть вашу область
                       </option>
                       {regions.map((region) => {
@@ -260,6 +347,9 @@ const Students = () => {
                     <input
                       {...register("studentStreet", {
                         required: true,
+                        pattern: {
+                          value: inputRegex,
+                        },
                       })}
                       className={errors?.studentStreet ? "input-field-invalid" : ""}
                       type="text"
@@ -274,6 +364,9 @@ const Students = () => {
                     <input
                       {...register("studentHouseNum", {
                         required: true,
+                        pattern: {
+                          value: inputRegex,
+                        },
                       })}
                       className={errors?.studentHouseNum ? "input-field-invalid" : ""}
                       type="text"
@@ -312,7 +405,15 @@ const Students = () => {
                   </div>
                 </div>
 
-                <BtnNext page={page} setPage={setPage} />
+                <div className="buttons">
+                  <BtnNext page={page} setPage={setPage} />
+                  {isFormInvalid && (
+                    <div className="error-banner">
+                      <img className="warning-icon" alt="" src={warning} />
+                      <span className="error-text">Будь ласка, перевірте коректність даних</span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}
@@ -327,12 +428,13 @@ const Students = () => {
                       Рівень освіти *
                     </label>
                     <select
+                      defaultValue={0}
                       {...register("studentEducation", {
                         required: true,
                       })}
                       className={errors?.studentEducation ? "input-field-invalid" : ""}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть рівень освіти
                       </option>
                       {education.map((eduOption) => {
@@ -352,6 +454,9 @@ const Students = () => {
                     <input
                       {...register("studentUniversity", {
                         required: true,
+                        pattern: {
+                          value: inputRegex,
+                        },
                       })}
                       className={errors?.studentUniversity ? "input-field-invalid" : ""}
                       type="text"
@@ -393,12 +498,13 @@ const Students = () => {
                       Рівень англійської *
                     </label>
                     <select
+                      defaultValue={0}
                       {...register("studentEnglish", {
                         required: true,
                       })}
                       className={errors?.studentEnglish ? "input-field-invalid" : ""}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть рівень англійської
                       </option>
                       {englishLevels.map((level) => {
@@ -430,12 +536,13 @@ const Students = () => {
                   <div className="input-field">
                     <label className={errors?.studentPosition ? "input-label-invalid" : "input-label"}>Посада *</label>
                     <select
+                      defaultValue={0}
                       {...register("studentPosition", {
                         required: true,
                       })}
                       className={errors?.studentPosition ? "input-field-invalid" : ""}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть посаду
                       </option>
                       {positions.map((position) => {
@@ -453,12 +560,13 @@ const Students = () => {
                       Досвід роботи *
                     </label>
                     <select
+                      defaultValue={0}
                       {...register("studentWorkExp", {
                         required: true,
                       })}
                       className={errors?.studentWorkExp ? "input-field-invalid" : ""}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть досвід роботи
                       </option>
                       {workExps.map((workExp, index) => {
@@ -476,12 +584,13 @@ const Students = () => {
                       Область роботи *
                     </label>
                     <select
+                      defaultValue={0}
                       {...register("studentWorkArea", {
                         required: true,
                       })}
                       className={errors?.studentWorkArea ? "input-field-invalid" : ""}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть область роботи
                       </option>
                       {workAreas.map((workArea) => {
@@ -497,11 +606,12 @@ const Students = () => {
                   <div className="input-field">
                     <label>Очікувана заробітна плата</label>
                     <select
+                      defaultValue={0}
                       {...register("studentSalary", {
                         required: false,
                       })}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть заробітну плату ($)
                       </option>
                       {salaries.map((salary) => {
@@ -517,11 +627,12 @@ const Students = () => {
                   <div className="input-field">
                     <label>Місце роботи</label>
                     <select
+                      defaultValue={0}
                       {...register("studentWorkplace", {
                         required: false,
                       })}
                     >
-                      <option disabled selected value="">
+                      <option disabled value={0}>
                         Оберіть місце роботи
                       </option>
                       {workplaces.map((workplace) => {
@@ -559,6 +670,13 @@ const Students = () => {
                     <span className="btnText">Підтвердити</span>
                     <img className="arrow-right" alt="" src={arrowRight} />
                   </button>
+
+                  {isFormInvalid && (
+                    <div className="error-banner">
+                      <img className="warning-icon" alt="" src={warning} />
+                      <span className="error-text">Будь ласка, перевірте коректність даних</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

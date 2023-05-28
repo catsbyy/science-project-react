@@ -325,6 +325,29 @@ form .buttons button,
   margin-right: 14px;
 }
 
+.error-banner {
+  display: flex;
+  margin-left: auto;
+  background-color: #f9e8ea;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.error-text {
+  color: #c71a2f;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.warning-icon {
+  width: 16px;
+  margin-right: 4px;
+}
+
 .result-students {
   margin-top: 50px;
   display: flex;
