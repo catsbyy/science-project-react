@@ -104,8 +104,6 @@ const Students = () => {
       }).then((e) => {
         console.log(e);
       });
-      console.log(JSON.stringify(student));
-      console.log("created student", student);
       navigate("/success");
     } else {
       setIsFormInvalid(true);
@@ -122,7 +120,7 @@ const Students = () => {
       "studentWorkplace",
       "studentProfilePic",
     ];
-    
+
     const textFields = [
       "studentSurname",
       "studentName",
