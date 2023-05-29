@@ -305,14 +305,14 @@ const Students = () => {
                     <label className={errors?.studentRegion ? "input-label-invalid" : "input-label"}>Область *</label>
 
                     <select
-                      defaultValue={0}
+                      defaultValue=""
                       name="studentRegion"
                       {...register("studentRegion", {
                         required: true,
                       })}
                       className={errors?.studentRegion ? "input-field-invalid" : ""}
                     >
-                      <option disabled value={0}>
+                      <option disabled value="">
                         Оберіть вашу область
                       </option>
                       {regions.map((region) => {
@@ -426,13 +426,13 @@ const Students = () => {
                       Рівень освіти *
                     </label>
                     <select
-                      defaultValue={0}
+                      defaultValue=""
                       {...register("studentEducation", {
                         required: true,
                       })}
                       className={errors?.studentEducation ? "input-field-invalid" : ""}
                     >
-                      <option disabled value={0}>
+                      <option disabled value="">
                         Оберіть рівень освіти
                       </option>
                       {education.map((eduOption) => {
@@ -496,13 +496,13 @@ const Students = () => {
                       Рівень англійської *
                     </label>
                     <select
-                      defaultValue={0}
+                      defaultValue=""
                       {...register("studentEnglish", {
                         required: true,
                       })}
                       className={errors?.studentEnglish ? "input-field-invalid" : ""}
                     >
-                      <option disabled value={0}>
+                      <option disabled value="">
                         Оберіть рівень англійської
                       </option>
                       {englishLevels.map((level) => {
@@ -534,13 +534,13 @@ const Students = () => {
                   <div className="input-field">
                     <label className={errors?.studentPosition ? "input-label-invalid" : "input-label"}>Посада *</label>
                     <select
-                      defaultValue={0}
+                      defaultValue=""
                       {...register("studentPosition", {
                         required: true,
                       })}
                       className={errors?.studentPosition ? "input-field-invalid" : ""}
                     >
-                      <option disabled value={0}>
+                      <option disabled value="">
                         Оберіть посаду
                       </option>
                       {positions.map((position) => {
@@ -558,13 +558,13 @@ const Students = () => {
                       Досвід роботи *
                     </label>
                     <select
-                      defaultValue={0}
+                      defaultValue=""
                       {...register("studentWorkExp", {
                         required: true,
                       })}
                       className={errors?.studentWorkExp ? "input-field-invalid" : ""}
                     >
-                      <option disabled value={0}>
+                      <option disabled value="">
                         Оберіть досвід роботи
                       </option>
                       {workExps.map((workExp, index) => {
@@ -582,13 +582,13 @@ const Students = () => {
                       Область роботи *
                     </label>
                     <select
-                      defaultValue={0}
+                      defaultValue=""
                       {...register("studentWorkArea", {
                         required: true,
                       })}
                       className={errors?.studentWorkArea ? "input-field-invalid" : ""}
                     >
-                      <option disabled value={0}>
+                      <option disabled value="">
                         Оберіть область роботи
                       </option>
                       {workAreas.map((workArea) => {
