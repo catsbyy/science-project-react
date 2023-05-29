@@ -164,11 +164,11 @@ const Students = () => {
       } else {
         /* if optional fields are not empty, check for regex match */
         if (key === optionalFields[0] || key === optionalFields[1] || key === optionalFields[6]) {
-          if (!linkRegex.test(value)) {
+          if (isValueNotEmpty && !linkRegex.test(value)) {
             isInvalid = true;
           }
         } else if (key === optionalFields[2] || key === optionalFields[3])
-          if (!inputRegex.test(value)) {
+          if (isValueNotEmpty && !inputRegex.test(value)) {
             isInvalid = true;
           }
       }
