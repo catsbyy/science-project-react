@@ -4,7 +4,7 @@ const Footer = () => {
     return ( 
         <footer>
             <p>
-            © Science Project, 2023
+            © Science Project, 2024
             </p>
             
         </footer>
